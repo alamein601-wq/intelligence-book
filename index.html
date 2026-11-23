@@ -1,9 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#3157d5">
+<meta name="description" content="শিশুদের বাংলা, ইংরেজি, আরবি ও ইসলামিক শিক্ষার স্মার্ট বই">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Intelligence Book">
 <title>Intelligence Book - Smart Learning</title>
+
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon.svg">
 
 <style>
 * {
@@ -12,253 +22,185 @@
   padding: 0;
   font-family: "Noto Sans Bengali", Arial, sans-serif;
 }
-
 body {
-  background: linear-gradient(180deg, #eef6ff 0%, #f8fafc 100%);
+  background: linear-gradient(180deg,#eef6ff,#f8fafc);
   color: #172554;
   padding: 15px;
 }
-
 header {
   text-align: center;
   padding: 20px 12px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: linear-gradient(135deg,#2563eb,#7c3aed);
   color: white;
   border-radius: 20px;
   margin-bottom: 16px;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 8px 20px rgba(37,99,235,.2);
 }
-
-header h1 { font-size: 26px; }
-header p { margin-top: 8px; font-size: 15px; opacity: 0.95; }
-
+header h1 {font-size:26px}
+header p {margin-top:8px;font-size:15px}
 .tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  display:flex;
+  gap:8px;
+  margin-bottom:16px;
 }
-
-.tabs button, .action-btn {
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.12s ease, background 0.2s ease;
+.tabs button,.action-btn {
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.tabs button {
-  flex: 1;
-  font-size: 14px;
-}
-
-.tabs button.active {
-  background: #7c3aed;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-}
-
+.tabs button {flex:1;font-size:14px}
+.tabs button.active {background:#7c3aed}
 .display-box {
-  background: white;
-  border: 2px solid #93c5fd;
-  border-radius: 22px;
-  text-align: center;
-  padding: 22px 16px;
-  margin-bottom: 18px;
-  box-shadow: 0 8px 20px rgba(219, 234, 254, 0.9);
-  overflow: hidden;
+  background:white;
+  border:2px solid #93c5fd;
+  border-radius:22px;
+  text-align:center;
+  padding:22px 16px;
+  margin-bottom:18px;
+  box-shadow:0 8px 20px rgba(219,234,254,.9);
+  overflow:hidden;
 }
-
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(3deg); }
+  0%,100% {transform:translateY(0) rotate(0)}
+  50% {transform:translateY(-10px) rotate(3deg)}
 }
-
 @keyframes animalMove {
-  0% { transform: translateY(0) scale(1) rotate(0deg); }
-  25% { transform: translateY(-14px) scale(1.12) rotate(-8deg); }
-  50% { transform: translateY(-4px) scale(1.16) rotate(8deg); }
-  75% { transform: translateY(-12px) scale(1.08) rotate(-5deg); }
-  100% { transform: translateY(0) scale(1) rotate(0deg); }
+  0% {transform:translateY(0) scale(1)}
+  25% {transform:translateY(-14px) scale(1.12) rotate(-8deg)}
+  50% {transform:translateY(-4px) scale(1.16) rotate(8deg)}
+  75% {transform:translateY(-12px) scale(1.08)}
+  100% {transform:translateY(0) scale(1)}
 }
-
 .picture {
-  font-size: 80px;
-  margin: 8px auto 12px;
-  display: inline-block;
-  animation: floatSlow 3s ease-in-out infinite;
-  cursor: pointer;
-  user-select: none;
+  font-size:80px;
+  margin:8px auto 12px;
+  display:inline-block;
+  animation:floatSlow 3s ease-in-out infinite;
+  cursor:pointer;
 }
-
-.picture.moving {
-  animation: animalMove 0.9s ease-in-out;
-}
-
+.picture.moving {animation:animalMove .9s ease-in-out}
 .big-char {
-  font-size: 74px;
-  font-weight: bold;
-  color: #2563eb;
-  line-height: 1.25;
+  font-size:74px;
+  font-weight:bold;
+  color:#2563eb;
+  line-height:1.25;
 }
-
 .word {
-  font-size: 22px;
-  margin: 8px 0 4px;
-  font-weight: bold;
-  color: #0f172a;
+  font-size:22px;
+  margin:8px 0 4px;
+  font-weight:bold;
+  color:#0f172a;
 }
-
 .rhyme-box {
-  background: #fef9c3;
-  border: 1px dashed #eab308;
-  color: #713f12;
-  padding: 10px 14px;
-  border-radius: 14px;
-  margin: 10px auto;
-  max-width: 520px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
+  background:#fef9c3;
+  border:1px dashed #eab308;
+  color:#713f12;
+  padding:10px 14px;
+  border-radius:14px;
+  margin:10px auto;
+  max-width:520px;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.5;
 }
-
-.hint {
-  color: #64748b;
-  margin-top: 6px;
-  font-size: 14px;
-}
-
+.hint {color:#64748b;margin-top:6px;font-size:14px}
 .actions {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 14px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
 }
-
-.action-btn {
-  padding: 11px 15px;
-  font-size: 14px;
-}
-
-.action-btn.rhyme-btn {
-  background: #059669;
-}
-
-.action-btn:active, .tabs button:active {
-  transform: scale(0.96);
-}
-
-h2 {
-  margin: 18px 0 12px;
-  font-size: 19px;
-  color: #1d4ed8;
-}
-
+.action-btn {padding:11px 15px;font-size:14px}
+.action-btn.rhyme-btn {background:#059669}
+.action-btn:active,.tabs button:active {transform:scale(.96)}
+h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
-
 .card {
-  background: white;
-  border: 1px solid #bfdbfe;
-  border-radius: 14px;
-  padding: 12px 6px;
-  text-align: center;
-  cursor: pointer;
-  min-width: 0;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background:white;
+  border:1px solid #bfdbfe;
+  border-radius:14px;
+  padding:12px 6px;
+  text-align:center;
+  cursor:pointer;
+  min-width:0;
 }
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.12);
-}
-
-.card.selected {
-  border: 3px solid #2563eb;
-  background: #eff6ff;
-}
-
+.card.selected {border:3px solid #2563eb;background:#eff6ff}
 .card .letter {
-  display: block;
-  font-size: 30px;
-  font-weight: bold;
-  color: #2563eb;
-  line-height: 1.25;
+  display:block;
+  font-size:30px;
+  font-weight:bold;
+  color:#2563eb;
+  line-height:1.25;
 }
-
 .card .emoji {
-  display: inline-block;
-  font-size: 30px;
-  margin: 5px 0;
-  animation: floatSlow 3.5s ease-in-out infinite;
+  display:inline-block;
+  font-size:30px;
+  margin:5px 0;
+  animation:floatSlow 3.5s ease-in-out infinite;
 }
-
-.card.selected .emoji {
-  animation: animalMove 0.9s ease-in-out;
-}
-
 .card small {
-  display: block;
-  color: #475569;
-  font-size: 12px;
-  overflow-wrap: anywhere;
+  display:block;
+  color:#475569;
+  font-size:12px;
+  overflow-wrap:anywhere;
 }
-
 .panel {
-  background: white;
-  padding: 18px;
-  border-radius: 18px;
-  margin-top: 22px;
-  border: 1px solid #dbeafe;
-  box-shadow: 0 5px 15px rgba(219, 234, 254, 0.6);
+  background:white;
+  padding:18px;
+  border-radius:18px;
+  margin-top:22px;
+  border:1px solid #dbeafe;
+  box-shadow:0 5px 15px rgba(219,234,254,.6);
 }
-
 #quizOptions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 15px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:15px;
 }
-
 .quiz-option {
-  background: #eff6ff;
-  border: 2px solid #bfdbfe;
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
+  background:#eff6ff;
+  border:2px solid #bfdbfe;
+  padding:14px;
+  border-radius:12px;
+  font-size:24px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.quiz-option:disabled {
-  cursor: default;
-  opacity: 0.85;
-}
-
-#feedback {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
+.quiz-option:disabled {cursor:default;opacity:.85}
+#feedback {margin-top:15px;font-weight:bold;font-size:16px}
 footer {
-  text-align: center;
-  margin: 25px 0 10px;
-  color: #64748b;
-  font-size: 13px;
+  text-align:center;
+  margin:25px 0 10px;
+  color:#64748b;
+  font-size:13px;
 }
-
-[hidden] { display: none !important; }
-
+.install-btn {
+  display:none;
+  width:100%;
+  margin-bottom:15px;
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  color:white;
+  background:#059669;
+  font-weight:bold;
+  font-size:15px;
+}
+[hidden] {display:none!important}
 @media(max-width:400px) {
-  header h1 { font-size: 22px; }
-  .big-char { font-size: 58px; }
-  .picture { font-size: 66px; }
+  header h1 {font-size:22px}
+  .big-char {font-size:58px}
+  .picture {font-size:66px}
 }
 </style>
 </head>
@@ -270,6 +212,8 @@ footer {
   <p>খেলতে খেলতে শিখি, ছড়ায় ছড়ায় আনন্দে বড় হই!</p>
 </header>
 
+<button class="install-btn" id="installBtn">📲 অ্যাপ ইনস্টল করুন</button>
+
 <div class="tabs">
   <button class="active" data-language="bn">বাংলা</button>
   <button data-language="en">English</button>
@@ -277,12 +221,11 @@ footer {
 </div>
 
 <section class="display-box">
-  <div class="picture" id="picture" title="ছবিতে চাপ দিলে নড়ে উঠবে!">🐍</div>
+  <div class="picture" id="picture">🐍</div>
   <div class="big-char" id="bigChar">অ</div>
   <div class="word" id="word">অ-তে অজগর</div>
   <div class="rhyme-box" id="rhymeText">অ-তে অজগরটি আসছে তেড়ে, আমটি আমি খাব পেড়ে।</div>
   <div class="hint" id="hint">বর্ণ ১ / ৫০</div>
-
   <div class="actions">
     <button class="action-btn" id="speakBtn">🔊 উচ্চারণ</button>
     <button class="action-btn rhyme-btn" id="rhymeBtn">🎵 ছড়া শুনুন</button>
@@ -305,390 +248,377 @@ footer {
     <button class="action-btn" id="startQuiz">কুইজ শুরু</button>
     <button class="action-btn" id="nextQuiz" hidden>পরের প্রশ্ন</button>
   </div>
-  <p id="score" style="margin-top:12px; font-weight:bold;">স্কোর: ০</p>
+  <p id="score" style="margin-top:12px;font-weight:bold">স্কোর: ০</p>
 </section>
 
 <footer>
   Intelligence Book © 2026 | Smart Learning
+  <p id="offlineStatus">অনলাইন শিক্ষার সুবিধা</p>
 </footer>
 
 <script>
 const bn = [
-  ["অ","অ-তে অজগর","🐍","অ-তে অজগরটি আসছে তেড়ে, আমটি আমি খাব পেড়ে।"],
-  ["আ","আ-তে আম","🥭","আ-তে আমটি ভারি মিষ্টি, রোদে ঝিকমিক করে দৃষ্টি।"],
-  ["ই","ই-তে ইঁদুর","🐭","ই-তে ইঁদুর ছানা ছুটে চলে, গর্তের ভেতর লুকায় ছলে।"],
-  ["ঈ","ঈ-তে ঈগল","🦅","ঈ-তে ঈগল পাখি আকাশ চষে, মেঘের দেশে ডানা কষে।"],
-  ["উ","উ-তে উট","🐪","উ-তে উট চলে মরুভূমিতে, পিঠের কুঁজে জল জমিতে।"],
-  ["ঊ","ঊ-তে ঊষা","🌅","ঊ-তে ঊষা আসে ভোরের আলোয়, রঙিন আকাশ জাগে মাথায়।"],
-  ["ঋ","ঋ-তে ঋষি","🧘","ঋ-তে ঋষি বসেন ধ্যানে, শান্তির সুর ভাসে গানে।"],
-  ["এ","এ-তে একতারা","🎸","এ-তে একতারা বাজে মধুর তানে, গ্রামবাংলার প্রাণের গানে।"],
-  ["ঐ","ঐ-তে ঐরাবত","🐘","ঐ-তে ঐরাবত সাদা হাতি, আকাশপথে চলে সাথি।"],
-  ["ও","ও-তে ওল","🥔","ও-তে ওল কচু খায় না কেউ, গলায় ধরলে ওঠে ঢেউ।"],
-  ["ঔ","ঔ-তে ঔষধ","💊","ঔ-তে ঔষধ খেলে রোগ সারে, সুস্থ থাকি বারেবারে।"],
-  ["ক","ক-তে কলা","🍌","ক-তে কলা পাকা হলুদ রঙ, খোসা ছাড়িয়ে খাই ঢং।"],
-  ["খ","খ-তে খরগোশ","🐰","খ-তে খরগোশ লাফিয়ে চলে, নরম কান দুটো দোলে।"],
-  ["গ","গ-তে গরু","🐄","গ-তে গরু দেয় দুধ, খেয়ে বাড়ে সবার ক্ষুধ।"],
-  ["ঘ","ঘ-তে ঘড়ি","🕒","ঘ-তে ঘড়ি টিক টিক বাজে, সময়মতো চলি কাজে।"],
-  ["ঙ","ঙ-তে ব্যাঙ","🐸","ঙ-তে ব্যাঙ ডাকে ঘ্যাঙর ঘ্যাঙ, বৃষ্টি এলে নাচে ঠ্যাং।"],
-  ["চ","চ-তে চাঁদ","🌙","চ-তে চাঁদ হাসে রাতের আকাশে, রূপালি আলোয় ভাসায় পাশে।"],
-  ["ছ","ছ-তে ছাতা","☂️","ছ-তে ছাতা মাথায় ধরি, বাদল দিনে ভিজি না পরি।"],
-  ["জ","জ-তে জাহাজ","🚢","জ-তে জাহাজ ভাসে সাগর জলে, ঢেউয়ের তালে সামনে চলে।"],
-  ["ঝ","ঝ-তে ঝরনা","🏞️","ঝ-তে ঝরনা নামে পাহাড় বেয়ে, শীতল জলে মন যায় ছেয়ে।"],
-  ["ঞ","ঞ-তে মিঞা","👨","ঞ-তে মিঞা ভাইয়ের হাসি, খুশির আলোয় ভাসে রাশি।"],
-  ["ট","ট-তে টমেটো","🍅","ট-তে টমেটো লাল টুকটুকে, সালাদে খেলে লাগে বেশ সুখে।"],
-  ["ঠ","ঠ-তে ঠেলাগাড়ি","🛒","ঠ-তে ঠেলাগাড়ি চলে পথ ধরে, ভারী বোঝা টানে যত্ন করে।"],
-  ["ড","ড-তে ডালিম","🍎","ড-তে ডালিম ভেতর লাল দানা, মিষ্টি স্বাদে নেই কোনো মানা।"],
-  ["ঢ","ঢ-তে ঢাক","🥁","ঢ-তে ঢাক বাজে ঢাক্কুর ঢাক, পূজা পার্বণে সবার ডাক।"],
-  ["ণ","ণ-তে বর্ণ","📖","ণ-তে বর্ণ সাজাই যত্ন করে, অক্ষর চিনি আনন্দের ভরে।"],
-  ["ত","ত-তে তাল","🌴","ত-তে তাল গাছে পাকা তাল, গরমে খাই তালের মাল।"],
-  ["থ","থ-তে থালা","🍽️","থ-তে থালা ভরা খাবার সাজে, পেট ভরে খাই দুপুর-সাঁঝে।"],
-  ["দ","দ-তে দোয়েল","🐦","দ-তে দোয়েল শিস দেয় সকালে, মিষ্টি গানে ঘুম ভাঙে সকলে।"],
-  ["ধ","ধ-তে ধান","🌾","ধ-তে ধান দোলে মাঠের মাঝে, সোনালি হাসি কৃষক সাজে।"],
-  ["ন","ন-তে নৌকা","⛵","ন-তে নৌকা চলে নদীর বুকে, মাঝি ভাই গান গায় সুখে।"],
-  ["প","প-তে পাখি","🐦","প-তে পাখি ওড়ে ডানা মেলে, নীল আকাশে খুশি খেলে।"],
-  ["ফ","ফ-তে ফুল","🌻","ফ-তে ফুল ফোটে বাগান জুড়ে, মৌমাছি আসে মধুর তরে।"],
-  ["ব","ব-তে বই","📚","ব-তে বই পড়ি রোজ সকালে, নতুন জ্ঞান বাড়ে কৌশলে।"],
-  ["ভ","ভ-তে ভালুক","🐻","ভ-তে ভালুক নাচে বনের মাঝে, কালো লোমে ভারি সাজে।"],
-  ["ম","ম-তে মাছ","🐟","ম-তে মাছ সাঁতার কাটে জলে, লেজ নেড়ে এদিক-ওদিক চলে।"],
-  ["য","য-তে যমুনা","🌊","য-তে যমুনা নদী বয়ে চলে, ঢেউয়ের ছন্দে কথা বলে।"],
-  ["র","র-তে রথ","🛺","র-তে রথ চলে উৎসব দিনে, রঙিন সাজ সবার চেনে।"],
-  ["ল","ল-তে লাটিম","🪀","ল-তে লাটিম ঘোরে বনবনিয়ে, দড়ির টানে ওঠে চমকিয়ে।"],
-  ["শ","শ-তে শাপলা","🌸","শ-তে শাপলা ফোটে বিলের জলে, জাতীয় ফুল সবার দলে।"],
-  ["ষ","ষ-তে ষাঁড়","🐂","ষ-তে ষাঁড় চলে মাঠে জোর কদমে, শক্তি দেখে সবাই থামে।"],
-  ["স","স-তে সাপ","🐍","স-তে সাপ এঁকেবেঁকে চলে, হিসহিস শব্দে ভয় ধরে মনে।"],
-  ["হ","হ-তে হাতি","🐘","হ-তে হাতি শুঁড় দুলিয়ে চলে, বনের রাজা সবার বলে।"],
-  ["ড়","ড়-তে আষাঢ়","🌧️","ড়-তে আষাঢ় মাসে নামে বৃষ্টি, সবুজ পাতায় নতুন সৃষ্টি।"],
-  ["ঢ়","ঢ়-যুক্ত শব্দ","📖","আষাঢ়-শ্রাবণ বর্ষার গান, প্রকৃতিতে আনে নতুন প্রাণ।"],
-  ["য়","য়-যুক্ত শব্দ","📖","ময়না পাখি কথা কয়, শুনে মনে আনন্দ হয়।"],
-  ["ৎ","ৎ-যুক্ত শব্দ","📖","উৎসব আসে হাসি নিয়ে, সবাই মিলে আনন্দ দিয়ে।"],
-  ["ং","ং-যুক্ত শব্দ","📖","রংধনু ওঠে আকাশের কোণে, সাতটি রঙে মন ভরে মনে।"],
-  ["ঃ","ঃ-যুক্ত শব্দ","📖","দুঃখ ভুলে হাসিমুখে চলি, সুন্দর জীবন গড়ে তুলি।"],
-  ["ঁ","ঁ-যুক্ত শব্দ","📖","চাঁদের আলোয় হাঁসি মেলে, স্বপ্ন আঁকি রাতের কোলে।"]
-].map(x => ({
-  char: x[0],
-  word: x[1],
-  emoji: x[2],
-  rhyme: x[3],
-  speak: x[1],
-  rhymeSpeak: x[3]
-}));
+["অ","অ-তে অজগর","🐍","অ-তে অজগরটি আসছে তেড়ে, আমটি আমি খাব পেড়ে।"],
+["আ","আ-তে আম","🥭","আ-তে আমটি ভারি মিষ্টি, রোদে ঝিকমিক করে দৃষ্টি।"],
+["ই","ই-তে ইঁদুর","🐭","ই-তে ইঁদুর ছানা ছুটে চলে, গর্তের ভেতর লুকায় ছলে।"],
+["ঈ","ঈ-তে ঈগল","🦅","ঈ-তে ঈগল পাখি আকাশ চষে, মেঘের দেশে ডানা কষে।"],
+["উ","উ-তে উট","🐪","উ-তে উট চলে মরুভূমিতে, পিঠের কুঁজে জল জমিতে।"],
+["ঊ","ঊ-তে ঊষা","🌅","ঊ-তে ঊষা আসে ভোরের আলোয়, রঙিন আকাশ জাগে মাথায়।"],
+["ঋ","ঋ-তে ঋষি","🧘","ঋ-তে ঋষি বসেন ধ্যানে, শান্তির সুর ভাসে গানে।"],
+["এ","এ-তে একতারা","🎸","এ-তে একতারা বাজে মধুর তানে, গ্রামবাংলার প্রাণের গানে।"],
+["ঐ","ঐ-তে ঐরাবত","🐘","ঐ-তে ঐরাবত সাদা হাতি, আকাশপথে চলে সাথি।"],
+["ও","ও-তে ওল","🥔","ও-তে ওল কচু খায় না কেউ, গলায় ধরলে ওঠে ঢেউ।"],
+["ঔ","ঔ-তে ঔষধ","💊","ঔ-তে ঔষধ খেলে রোগ সারে, সুস্থ থাকি বারেবারে।"],
+["ক","ক-তে কলা","🍌","ক-তে কলা পাকা হলুদ রঙ, খোসা ছাড়িয়ে খাই ঢং।"],
+["খ","খ-তে খরগোশ","🐰","খ-তে খরগোশ লাফিয়ে চলে, নরম কান দুটো দোলে।"],
+["গ","গ-তে গরু","🐄","গ-তে গরু দেয় দুধ, খেয়ে বাড়ে সবার ক্ষুধ।"],
+["ঘ","ঘ-তে ঘড়ি","🕒","ঘ-তে ঘড়ি টিক টিক বাজে, সময়মতো চলি কাজে।"],
+["ঙ","ঙ-তে ব্যাঙ","🐸","ঙ-তে ব্যাঙ ডাকে ঘ্যাঙর ঘ্যাঙ, বৃষ্টি এলে নাচে ঠ্যাং।"],
+["চ","চ-তে চাঁদ","🌙","চ-তে চাঁদ হাসে রাতের আকাশে, রূপালি আলোয় ভাসায় পাশে।"],
+["ছ","ছ-তে ছাতা","☂️","ছ-তে ছাতা মাথায় ধরি, বাদল দিনে ভিজি না পরি।"],
+["জ","জ-তে জাহাজ","🚢","জ-তে জাহাজ ভাসে সাগর জলে, ঢেউয়ের তালে সামনে চলে।"],
+["ঝ","ঝ-তে ঝরনা","🏞️","ঝ-তে ঝরনা নামে পাহাড় বেয়ে, শীতল জলে মন যায় ছেয়ে।"],
+["ঞ","ঞ-তে মিঞা","👨","ঞ-তে মিঞা ভাইয়ের হাসি, খুশির আলোয় ভাসে রাশি।"],
+["ট","ট-তে টমেটো","🍅","ট-তে টমেটো লাল টুকটুকে, সালাদে খেলে লাগে বেশ সুখে।"],
+["ঠ","ঠ-তে ঠেলাগাড়ি","🛒","ঠ-তে ঠেলাগাড়ি চলে পথ ধরে, ভারী বোঝা টানে যত্ন করে।"],
+["ড","ড-তে ডালিম","🍎","ড-তে ডালিম ভেতর লাল দানা, মিষ্টি স্বাদে নেই কোনো মানা।"],
+["ঢ","ঢ-তে ঢাক","🥁","ঢ-তে ঢাক বাজে ঢাক্কুর ঢাক, পূজা পার্বণে সবার ডাক।"],
+["ণ","ণ-তে বর্ণ","📖","ণ-তে বর্ণ সাজাই যত্ন করে, অক্ষর চিনি আনন্দের ভরে।"],
+["ত","ত-তে তাল","🌴","ত-তে তাল গাছে পাকা তাল, গরমে খাই তালের মাল।"],
+["থ","থ-তে থালা","🍽️","থ-তে থালা ভরা খাবার সাজে, পেট ভরে খাই দুপুর-সাঁঝে।"],
+["দ","দ-তে দোয়েল","🐦","দ-তে দোয়েল শিস দেয় সকালে, মিষ্টি গানে ঘুম ভাঙে সকলে।"],
+["ধ","ধ-তে ধান","🌾","ধ-তে ধান দোলে মাঠের মাঝে, সোনালি হাসি কৃষক সাজে।"],
+["ন","ন-তে নৌকা","⛵","ন-তে নৌকা চলে নদীর বুকে, মাঝি ভাই গান গায় সুখে।"],
+["প","প-তে পাখি","🐦","প-তে পাখি ওড়ে ডানা মেলে, নীল আকাশে খুশি খেলে।"],
+["ফ","ফ-তে ফুল","🌻","ফ-তে ফুল ফোটে বাগান জুড়ে, মৌমাছি আসে মধুর তরে।"],
+["ব","ব-তে বই","📚","ব-তে বই পড়ি রোজ সকালে, নতুন জ্ঞান বাড়ে কৌশলে।"],
+["ভ","ভ-তে ভালুক","🐻","ভ-তে ভালুক নাচে বনের মাঝে, কালো লোমে ভারি সাজে।"],
+["ম","ম-তে মাছ","🐟","ম-তে মাছ সাঁতার কাটে জলে, লেজ নেড়ে এদিক-ওদিক চলে।"],
+["য","য-তে যমুনা","🌊","য-তে যমুনা নদী বয়ে চলে, ঢেউয়ের ছন্দে কথা বলে।"],
+["র","র-তে রথ","🛺","র-তে রথ চলে উৎসব দিনে, রঙিন সাজ সবার চেনে।"],
+["ল","ল-তে লাটিম","🪀","ল-তে লাটিম ঘোরে বনবনিয়ে, দড়ির টানে ওঠে চমকিয়ে।"],
+["শ","শ-তে শাপলা","🌸","শ-তে শাপলা ফোটে বিলের জলে, জাতীয় ফুল সবার দলে।"],
+["ষ","ষ-তে ষাঁড়","🐂","ষ-তে ষাঁড় চলে মাঠে জোর কদমে, শক্তি দেখে সবাই থামে।"],
+["স","স-তে সাপ","🐍","স-তে সাপ এঁকেবেঁকে চলে, হিসহিস শব্দে ভয় ধরে মনে।"],
+["হ","হ-তে হাতি","🐘","হ-তে হাতি শুঁড় দুলিয়ে চলে, বনের রাজা সবার বলে।"],
+["ড়","ড়-তে আষাঢ়","🌧️","ড়-তে আষাঢ় মাসে নামে বৃষ্টি, সবুজ পাতায় নতুন সৃষ্টি।"],
+["ঢ়","ঢ়-যুক্ত শব্দ","📖","আষাঢ়-শ্রাবণ বর্ষার গান, প্রকৃতিতে আনে নতুন প্রাণ।"],
+["য়","য়-যুক্ত শব্দ","📖","ময়না পাখি কথা কয়, শুনে মনে আনন্দ হয়।"],
+["ৎ","ৎ-যুক্ত শব্দ","📖","উৎসব আসে হাসি নিয়ে, সবাই মিলে আনন্দ দিয়ে।"],
+["ং","ং-যুক্ত শব্দ","📖","রংধনু ওঠে আকাশের কোণে, সাতটি রঙে মন ভরে মনে।"],
+["ঃ","ঃ-যুক্ত শব্দ","📖","দুঃখ ভুলে হাসিমুখে চলি, সুন্দর জীবন গড়ে তুলি।"],
+["ঁ","ঁ-যুক্ত শব্দ","📖","চাঁদের আলোয় হাঁসি মেলে, স্বপ্ন আঁকি রাতের কোলে।"]
+];
 
 const en = [
-  ["A","A for Apple","🍎","A for Apple sweet and red, crunch a bite before you're fed!"],
-  ["B","B for Ball","⚽","B for Ball bounce so high, jumping up toward the sky!"],
-  ["C","C for Cat","🐱","C for Cat says meow, meow, purring soft and happy now!"],
-  ["D","D for Dog","🐶","D for Dog wags his tail, running fast along the trail!"],
-  ["E","E for Elephant","🐘","E for Elephant big and strong, swinging his trunk all day long!"],
-  ["F","F for Fish","🐟","F for Fish swims in the sea, splashing bubbles wild and free!"],
-  ["G","G for Goat","🐐","G for Goat climbs up the hill, skipping around with a cheerful thrill!"],
-  ["H","H for House","🏠","H for House so warm and neat, a cozy place where families meet!"],
-  ["I","I for Ice cream","🍦","I for Ice cream cold and sweet, a sunny day's favorite treat!"],
-  ["J","J for Jug","🏺","J for Jug filled to the brim, pouring water cool and trim!"],
-  ["K","K for Kite","🪁","K for Kite flies up so high, dancing with the breezy sky!"],
-  ["L","L for Lion","🦁","L for Lion gives a mighty roar, king of the jungle evermore!"],
-  ["M","M for Mango","🥭","M for Mango juicy and bright, full of sunshine and delight!"],
-  ["N","N for Nest","🪺","N for Nest in the leafy tree, baby birds chirp happily!"],
-  ["O","O for Orange","🍊","O for Orange round and sweet, vitamin packed and fun to eat!"],
-  ["P","P for Parrot","🦜","P for Parrot green and bright, repeats the words we say just right!"],
-  ["Q","Q for Queen","👑","Q for Queen with a shining crown, smiling kindly all around!"],
-  ["R","R for Rabbit","🐰","R for Rabbit hops so quick, twitching ears and doing a trick!"],
-  ["S","S for Sun","☀️","S for Sun shines golden bright, waking up the world with light!"],
-  ["T","T for Tiger","🐯","T for Tiger with stripes so bold, prowling softly through the wold!"],
-  ["U","U for Umbrella","☂️","U for Umbrella opens wide, keeping raindrops off our side!"],
-  ["V","V for Van","🚐","V for Van goes zoom, zoom, zoom, driving past the flower bloom!"],
-  ["W","W for Watch","⌚","W for Watch ticks on my wrist, telling time so nothing's missed!"],
-  ["X","X for Xylophone","🎼","X for Xylophone makes a chime, tapping out a happy rhyme!"],
-  ["Y","Y for Yacht","🛥️","Y for Yacht sails on the bay, gliding smoothly through the day!"],
-  ["Z","Z for Zebra","🦓","Z for Zebra black and white, galloping fast in morning light!"]
-].map(x => ({
-  char: x[0],
-  word: x[1],
-  emoji: x[2],
-  rhyme: x[3],
-  speak: x[1],
-  rhymeSpeak: x[3]
-}));
+["A","A for Apple","🍎","A for Apple sweet and red, crunch a bite before you're fed!"],
+["B","B for Ball","⚽","B for Ball bounce so high, jumping up toward the sky!"],
+["C","C for Cat","🐱","C for Cat says meow, meow, purring soft and happy now!"],
+["D","D for Dog","🐶","D for Dog wags his tail, running fast along the trail!"],
+["E","E for Elephant","🐘","E for Elephant big and strong, swinging his trunk all day long!"],
+["F","F for Fish","🐟","F for Fish swims in the sea, splashing bubbles wild and free!"],
+["G","G for Goat","🐐","G for Goat climbs up the hill, skipping around happily!"],
+["H","H for House","🏠","H for House so warm and neat, a cozy place for families!"],
+["I","I for Ice cream","🍦","I for Ice cream cold and sweet, a sunny day's favorite treat!"],
+["J","J for Jug","🏺","J for Jug filled to the brim, pouring water cool and trim!"],
+["K","K for Kite","🪁","K for Kite flies up so high, dancing in the sky!"],
+["L","L for Lion","🦁","L for Lion gives a mighty roar, king of the jungle evermore!"],
+["M","M for Mango","🥭","M for Mango juicy and bright, full of sunshine and delight!"],
+["N","N for Nest","🪺","N for Nest in the leafy tree, baby birds chirp happily!"],
+["O","O for Orange","🍊","O for Orange round and sweet, fun to eat!"],
+["P","P for Parrot","🦜","P for Parrot green and bright, repeats the words we say!"],
+["Q","Q for Queen","👑","Q for Queen with a shining crown, smiling kindly all around!"],
+["R","R for Rabbit","🐰","R for Rabbit hops so quick, twitching ears!"],
+["S","S for Sun","☀️","S for Sun shines golden bright, waking up the world!"],
+["T","T for Tiger","🐯","T for Tiger with stripes so bold, prowling through the world!"],
+["U","U for Umbrella","☂️","U for Umbrella opens wide, keeping raindrops off!"],
+["V","V for Van","🚐","V for Van goes zoom, zoom, zoom!"],
+["W","W for Watch","⌚","W for Watch ticks on my wrist, telling time!"],
+["X","X for Xylophone","🎼","X for Xylophone makes a chime, tapping out a rhyme!"],
+["Y","Y for Yacht","🛥️","Y for Yacht sails on the bay!"],
+["Z","Z for Zebra","🦓","Z for Zebra black and white!"]
+];
 
 const ar = [
-  ["أ","ألف - أرنب","🐰","ألف أرنب يقفز فرحًا، في الحقول يمضي مرحًا.","ألف","audio/ar/alif.mp3"],
-  ["ب","باء - بطة","🦆","باء بطة تسبح في الماء، تغني لحنًا بكل صفاء.","باء","audio/ar/baa.mp3"],
-  ["ت","تاء - تفاح","🍎","تاء تفاح أحمر حلو، طعمه شهي في كل جو.","تاء","audio/ar/taa.mp3"],
-  ["ث","ثاء - ثعلب","🦊","ثاء ثعلب ماكر ذكي، يجري بين الأشجار كي يحكي.","ثاء","audio/ar/thaa.mp3"],
-  ["ج","جيم - جمل","🐪","جيم جمل سفينة الصحراء، يصبر دومًا في البيداء.","جيم","audio/ar/jeem.mp3"],
-  ["ح","حاء - حصان","🐎","حاء حصان يعدو سريعًا، في الميدان يبدو بديعًا.","حاء","audio/ar/haa.mp3"],
-  ["خ","خاء - خبز","🍞","خاء خبز دافئ لذيذ، في الصباح رزق يزيد.","خاء","audio/ar/khaa.mp3"],
-  ["د","دال - دب","🐻","دال دب يمشي بهدوء، يحب العسل في كل وضوء.","دال","audio/ar/daal.mp3"],
-  ["ذ","ذال - ذرة","🌽","ذال ذرة صفراء جميلة، في المزارع تبدو أصيلة.","ذال","audio/ar/dhaal.mp3"],
-  ["ر","راء - رمان","🍎","راء رمان حباته نور، في داخله خير وسرور.","راء","audio/ar/raa.mp3"],
-  ["ز","زاي - زهرة","🌹","زاي زهرة تفوح عطرًا، تملأ الدنيا بهجةً وبشرًا.","زاي","audio/ar/zaay.mp3"],
-  ["س","سين - سمكة","🐟","سين سمكة تسبح بمهارة، بين المرجان في كل حارة.","سين","audio/ar/seen.mp3"],
-  ["ش","شين - شمس","☀️","شين شمس تشرق بنور، تبعث فينا كل سرور.","شين","audio/ar/sheen.mp3"],
-  ["ص","صاد - صقر","🦅","صاد صقر يحلق عاليًا، بنظره الثاقب يبدو زاهيًا.","صاد","audio/ar/saad.mp3"],
-  ["ض","ضاد - ضفدع","🐸","ضاد ضفدع ينط في النهر، يغني سعيدًا عند الفجر.","ضاد","audio/ar/daad.mp3"],
-  ["ط","طاء - طائرة","✈️","طاء طائرة تطير في السماء، تسافر بعيدًا نحو الفضاء.","طاء","audio/ar/taa2.mp3"],
-  ["ظ","ظاء - ظرف","✉️","ظاء ظرف يحمل رسالة، فيها أخبار وجمال المقالة.","ظاء","audio/ar/dhaa2.mp3"],
-  ["ع","عين - عنب","🍇","عين عنب عناقيد تتدلى، حلو المذاق لمن يتسلى.","عين","audio/ar/ayn.mp3"],
-  ["غ","غين - غزال","🦌","غين غزال رشيق الخطى، يركض خفيفًا دون خطا.","غين","audio/ar/ghayn.mp3"],
-  ["ف","فاء - فراشة","🦋","فاء فراشة بألوان زاهية، ترقص حول الزهور الندية.","فاء","audio/ar/faa.mp3"],
-  ["ق","قاف - قمر","🌙","قاف قمر يضيء الليالي، يرسم حلمًا في الخيال.","قاف","audio/ar/qaaf.mp3"],
-  ["ك","كاف - كتاب","📚","كاف كتاب خير صديق، يهدي العقل إلى الطريق.","كاف","audio/ar/kaaf.mp3"],
-  ["ل","لام - ليمون","🍋","لام ليمون منعش وقوي، يعطي صحة وعزمًا قوي.","لام","audio/ar/laam.mp3"],
-  ["م","ميم - موز","🍌","ميم موز أصفر وطري، يحبه الصغير والكبيري.","ميم","audio/ar/meem.mp3"],
-  ["ن","نون - نمر","🐯","نون نمر مخطط قوي، يمشي واثقًا في كل حي.","نون","audio/ar/noon.mp3"],
-  ["ه","هاء - هلال","🌙","هاء هلال يطل جديدًا، يبشر يومًا حلوًا سعيدًا.","هاء","audio/ar/haa2.mp3"],
-  ["و","واو - وردة","🌹","واو وردة تفتح باكرًا، تنشر طيبًا في كل ذكرا.","واو","audio/ar/waaw.mp3"],
-  ["ي","ياء - يد","✋","ياء يد تعمل بإتقان، تساعد غيرها في كل مكان.","ياء","audio/ar/yaa.mp3"]
-].map(x => ({
-  char: x[0],
-  word: x[1],
-  emoji: x[2],
-  rhyme: x[3],
-  speak: x[4],
-  audioSrc: x[5],
-  rhymeSpeak: x[3]
+["أ","ألف - أرنب","🐰","ألف أرنب يقفز فرحًا، في الحقول يمضي مرحًا.","ألف"],
+["ب","باء - بطة","🦆","باء بطة تسبح في الماء، تغني لحنًا بكل صفاء.","باء"],
+["ت","تاء - تفاح","🍎","تاء تفاح أحمر حلو، طعمه شهي في كل جو.","تاء"],
+["ث","ثاء - ثعلب","🦊","ثاء ثعلب ماكر ذكي، يجري بين الأشجار.","ثاء"],
+["ج","جيم - جمل","🐪","جيم جمل سفينة الصحراء، يصبر دومًا.","جيم"],
+["ح","حاء - حصان","🐎","حاء حصان يعدو سريعًا، في الميدان.","حاء"],
+["خ","خاء - خبز","🍞","خاء خبز دافئ لذيذ، في الصباح.","خاء"],
+["د","دال - دب","🐻","دال دب يمشي بهدوء، يحب العسل.","دال"],
+["ذ","ذال - ذرة","🌽","ذال ذرة صفراء جميلة.","ذال"],
+["ر","راء - رمان","🍎","راء رمان حباته نور.","راء"],
+["ز","زاي - زهرة","🌹","زاي زهرة تفوح عطرًا.","زاي"],
+["س","سين - سمكة","🐟","سين سمكة تسبح بمهارة.","سين"],
+["ش","شين - شمس","☀️","شين شمس تشرق بنور.","شين"],
+["ص","صاد - صقر","🦅","صاد صقر يحلق عاليًا.","صاد"],
+["ض","ضاد - ضفدع","🐸","ضاد ضفدع ينط في النهر.","ضاد"],
+["ط","طاء - طائرة","✈️","طاء طائرة تطير في السماء.","طاء"],
+["ظ","ظاء - ظرف","✉️","ظاء ظرف يحمل رسالة.","ظاء"],
+["ع","عين - عنب","🍇","عين عنب عناقيد تتدلى.","عين"],
+["غ","غين - غزال","🦌","غين غزال رشيق الخطى.","غين"],
+["ف","فاء - فراشة","🦋","فاء فراشة بألوان زاهية.","فاء"],
+["ق","قاف - قمر","🌙","قاف قمر يضيء الليالي.","قاف"],
+["ك","كاف - كتاب","📚","كاف كتاب خير صديق.","كاف"],
+["ل","لام - ليمون","🍋","لام ليمون منعش وقوي.","لام"],
+["م","ميم - موز","🍌","ميم موز أصفر وطري.","ميم"],
+["ن","نون - نمر","🐯","نون نمر مخطط قوي.","نون"],
+["ه","هاء - هلال","🌙","هاء هلال يطل جديدًا.","هاء"],
+["و","واو - وردة","🌹","واو وردة تفتح باكرًا.","واو"],
+["ي","ياء - يد","✋","ياء يد تعمل بإتقان.","ياء"]
+];
+
+const makeItems = (data, language) => data.map(x => ({
+  char:x[0],
+  word:x[1],
+  emoji:x[2],
+  rhyme:x[3],
+  speak:x[4] || x[1],
+  rhymeSpeak:x[3],
+  lang:language
 }));
 
 const languages = {
-  bn: { items: bn, title: "বাংলা বর্ণমালা", voice: "bn-BD", dir: "ltr", pitch: 1.05, rate: 0.85 },
-  en: { items: en, title: "English Alphabet", voice: "en-US", dir: "ltr", pitch: 1.06, rate: 0.86 },
-  ar: { items: ar, title: "الحروف العربية", voice: "ar-SA", dir: "rtl", pitch: 1.04, rate: 0.82 }
+  bn:{items:makeItems(bn,"bn"),title:"বাংলা বর্ণমালা",voice:"bn-BD",dir:"ltr",pitch:1.05,rate:.85},
+  en:{items:makeItems(en,"en"),title:"English Alphabet",voice:"en-US",dir:"ltr",pitch:1.06,rate:.86},
+  ar:{items:makeItems(ar,"ar"),title:"الحروف العربية",voice:"ar-SA",dir:"rtl",pitch:1.04,rate:.82}
 };
 
-let language = "bn";
-let currentIndex = 0;
-let quizData = [];
-let quizIndex = 0;
-let points = 0;
-let answered = false;
-let currentAudio = null;
+let language="bn";
+let currentIndex=0;
+let quizData=[];
+let quizIndex=0;
+let points=0;
+let answered=false;
+let currentAudio=null;
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
+function currentItems(){return languages[language].items}
 
-function currentItems() {
-  return languages[language].items;
-}
-
-function pickTeacherVoice(langCode) {
-  if (!("speechSynthesis" in window)) return null;
-  const voices = speechSynthesis.getVoices();
-  if (!voices || !voices.length) return null;
-  const prefix = langCode.split("-")[0].toLowerCase();
-  const exact = voices.find(v => v.lang && v.lang.toLowerCase() === langCode.toLowerCase());
-  if (exact) return exact;
-  return voices.find(v => v.lang && v.lang.toLowerCase().startsWith(prefix)) || null;
-}
-
-function speakWithTTS(text, langConfig) {
-  if (!("speechSynthesis" in window)) {
+function speakWithTTS(text,config){
+  if(!("speechSynthesis" in window)){
     alert("আপনার ব্রাউজারে ভয়েস সুবিধা নেই।");
     return;
   }
   speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  const voice = pickTeacherVoice(langConfig.voice);
-  if (voice) utter.voice = voice;
-  utter.lang = langConfig.voice;
-  utter.pitch = langConfig.pitch || 1.05;
-  utter.rate = langConfig.rate || 0.85;
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.lang=config.voice;
+  utter.pitch=config.pitch;
+  utter.rate=config.rate;
+  const prefix=config.voice.split("-")[0];
+  const voice=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith(prefix.toLowerCase()));
+  if(voice) utter.voice=voice;
   speechSynthesis.speak(utter);
 }
 
-function speak(text, audioSrc) {
-  const langConfig = languages[language];
-  if (currentAudio) {
+function speak(text){
+  if(currentAudio){
     currentAudio.pause();
-    currentAudio.currentTime = 0;
-    currentAudio = null;
+    currentAudio=null;
   }
-
-  if (audioSrc) {
-    const audio = new Audio(audioSrc);
-    currentAudio = audio;
-    audio.play().catch(() => {
-      speakWithTTS(text, langConfig);
-    });
-    return;
-  }
-
-  speakWithTTS(text, langConfig);
+  speakWithTTS(text,languages[language]);
 }
 
-function triggerMoveAnimation() {
-  const pic = $("picture");
+function triggerMoveAnimation(){
+  const pic=$("picture");
   pic.classList.remove("moving");
   void pic.offsetWidth;
   pic.classList.add("moving");
 }
 
-function showLetter(index) {
-  const items = currentItems();
-  currentIndex = (index + items.length) % items.length;
-  const item = items[currentIndex];
-  const cfg = languages[language];
+function showLetter(index){
+  const items=currentItems();
+  currentIndex=(index+items.length)%items.length;
+  const item=items[currentIndex];
+  const cfg=languages[language];
 
-  $("bigChar").textContent = item.char;
-  $("word").textContent = item.word;
-  $("picture").textContent = item.emoji;
-  $("rhymeText").textContent = item.rhyme;
-  $("rhymeText").dir = cfg.dir;
-  $("word").dir = cfg.dir;
-  $("hint").textContent = "বর্ণ " + (currentIndex + 1) + " / " + items.length;
+  $("bigChar").textContent=item.char;
+  $("word").textContent=item.word;
+  $("picture").textContent=item.emoji;
+  $("rhymeText").textContent=item.rhyme;
+  $("rhymeText").dir=cfg.dir;
+  $("word").dir=cfg.dir;
+  $("hint").textContent="বর্ণ "+(currentIndex+1)+" / "+items.length;
 
   triggerMoveAnimation();
 
-  document.querySelectorAll(".card").forEach((card, i) => {
-    card.classList.toggle("selected", i === currentIndex);
+  document.querySelectorAll(".card").forEach((card,i)=>{
+    card.classList.toggle("selected",i===currentIndex);
   });
 
-  $("speakBtn").onclick = () => {
-    triggerMoveAnimation();
-    speak(item.speak, item.audioSrc);
-  };
-
-  $("rhymeBtn").onclick = () => {
-    triggerMoveAnimation();
-    speakWithTTS(item.rhymeSpeak, cfg);
-  };
-
-  $("picture").onclick = () => {
-    triggerMoveAnimation();
-    speak(item.speak, item.audioSrc);
-  };
+  $("speakBtn").onclick=()=>{triggerMoveAnimation();speak(item.speak)};
+  $("rhymeBtn").onclick=()=>{triggerMoveAnimation();speak(item.rhymeSpeak)};
+  $("picture").onclick=()=>{triggerMoveAnimation();speak(item.speak)};
 }
 
-function renderGrid() {
-  const items = currentItems();
-  const cfg = languages[language];
-  const grid = $("letterGrid");
-  grid.innerHTML = "";
-  grid.dir = cfg.dir;
+function renderGrid(){
+  const items=currentItems();
+  const cfg=languages[language];
+  const grid=$("letterGrid");
+  grid.innerHTML="";
+  grid.dir=cfg.dir;
 
-  items.forEach((item, index) => {
-    const card = document.createElement("button");
-    card.className = "card";
-    card.type = "button";
+  items.forEach((item,index)=>{
+    const card=document.createElement("button");
+    card.className="card";
+    card.type="button";
 
-    const letter = document.createElement("span");
-    letter.className = "letter";
-    letter.textContent = item.char;
+    const letter=document.createElement("span");
+    letter.className="letter";
+    letter.textContent=item.char;
 
-    const emoji = document.createElement("span");
-    emoji.className = "emoji";
-    emoji.textContent = item.emoji;
-    emoji.style.animationDelay = ((index % 6) * 0.25) + "s";
+    const emoji=document.createElement("span");
+    emoji.className="emoji";
+    emoji.textContent=item.emoji;
 
-    const small = document.createElement("small");
-    small.textContent = item.word;
+    const small=document.createElement("small");
+    small.textContent=item.word;
 
-    card.append(letter, emoji, small);
-    card.addEventListener("click", () => {
+    card.append(letter,emoji,small);
+    card.addEventListener("click",()=>{
       showLetter(index);
-      speak(item.speak, item.audioSrc);
+      speak(item.speak);
     });
-
     grid.appendChild(card);
   });
-
   showLetter(currentIndex);
 }
 
-document.querySelectorAll("[data-language]").forEach(button => {
-  button.addEventListener("click", () => {
-    language = button.dataset.language;
-    currentIndex = 0;
-
-    document.querySelectorAll("[data-language]").forEach(b =>
-      b.classList.toggle("active", b === button)
+document.querySelectorAll("[data-language]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    language=button.dataset.language;
+    currentIndex=0;
+    document.querySelectorAll("[data-language]").forEach(b=>
+      b.classList.toggle("active",b===button)
     );
-
-    $("gridTitle").textContent = languages[language].title;
+    $("gridTitle").textContent=languages[language].title;
     renderGrid();
+    $("quizQuestion").textContent="প্রস্তুত হলে কুইজ শুরু করুন।";
+    $("quizOptions").innerHTML="";
+    $("feedback").textContent="";
+    $("nextQuiz").hidden=true;
   });
 });
 
-$("prevBtn").onclick = () => showLetter(currentIndex - 1);
-$("nextBtn").onclick = () => showLetter(currentIndex + 1);
+$("prevBtn").onclick=()=>showLetter(currentIndex-1);
+$("nextBtn").onclick=()=>showLetter(currentIndex+1);
 
-function shuffle(items) {
-  return [...items].sort(() => Math.random() - 0.5);
+function shuffle(items){
+  const copy=[...items];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
 }
 
-function startQuiz() {
-  const items = currentItems();
-  quizData = shuffle(items).slice(0, 10);
-  quizIndex = 0;
-  points = 0;
+function startQuiz(){
+  quizData=shuffle(currentItems()).slice(0,10);
+  quizIndex=0;
+  points=0;
   showQuiz();
 }
 
-function showQuiz() {
-  answered = false;
-  const item = quizData[quizIndex];
-  const items = currentItems();
-  const cfg = languages[language];
+function showQuiz(){
+  answered=false;
+  const item=quizData[quizIndex];
+  const items=currentItems();
+  const cfg=languages[language];
 
-  $("quizQuestion").textContent = "কোনটি " + item.word + " এর সঠিক বর্ণ?";
-  $("quizOptions").dir = cfg.dir;
+  $("quizQuestion").textContent="কোনটি "+item.word+" এর সঠিক বর্ণ?";
+  $("quizOptions").dir=cfg.dir;
 
-  const wrong = shuffle(items.filter(x => x.char !== item.char)).slice(0, 3);
-  const options = shuffle([item, ...wrong]);
+  const wrong=shuffle(items.filter(x=>x.char!==item.char)).slice(0,3);
+  const options=shuffle([item,...wrong]);
 
-  $("quizOptions").innerHTML = "";
-  $("feedback").textContent = "";
-  $("nextQuiz").hidden = true;
+  $("quizOptions").innerHTML="";
+  $("feedback").textContent="";
+  $("nextQuiz").hidden=true;
 
-  options.forEach(option => {
-    const button = document.createElement("button");
-    button.className = "quiz-option";
-    button.textContent = option.char;
-
-    button.onclick = () => {
-      if (answered) return;
-      answered = true;
-
-      if (option.char === item.char) {
+  options.forEach(option=>{
+    const button=document.createElement("button");
+    button.className="quiz-option";
+    button.textContent=option.char;
+    button.onclick=()=>{
+      if(answered)return;
+      answered=true;
+      if(option.char===item.char){
         points++;
-        $("feedback").textContent = "🎉 চমৎকার! সঠিক উত্তর!";
-        $("feedback").style.color = "green";
-        speakWithTTS("সঠিক উত্তর!", languages.bn);
-      } else {
-        $("feedback").textContent = "❌ সঠিক উত্তর: " + item.char;
-        $("feedback").style.color = "red";
+        $("feedback").textContent="🎉 চমৎকার! সঠিক উত্তর!";
+        $("feedback").style.color="green";
+        speakWithTTS("সঠিক উত্তর!",languages.bn);
+      }else{
+        $("feedback").textContent="❌ সঠিক উত্তর: "+item.char;
+        $("feedback").style.color="red";
       }
-
-      [...$("quizOptions").children].forEach(btn => {
-        btn.disabled = true;
-      });
-
-      $("score").textContent = "স্কোর: " + points + " / " + (quizIndex + 1);
-      $("nextQuiz").hidden = false;
+      [...$("quizOptions").children].forEach(btn=>btn.disabled=true);
+      $("score").textContent="স্কোর: "+points+" / "+(quizIndex+1);
+      $("nextQuiz").hidden=false;
     };
-
     $("quizOptions").appendChild(button);
   });
 }
 
-$("startQuiz").onclick = startQuiz;
-
-$("nextQuiz").onclick = () => {
+$("startQuiz").onclick=startQuiz;
+$("nextQuiz").onclick=()=>{
   quizIndex++;
-  if (quizIndex >= quizData.length) {
-    $("quizQuestion").textContent =
-      "🏆 কুইজ শেষ! আপনার ফলাফল: " + points + " / " + quizData.length;
-    $("quizOptions").innerHTML = "";
-    $("feedback").textContent =
-      points >= 8 ? "অসাধারণ! খুব ভালো করেছেন।" : "আরও অনুশীলন করুন।";
-    $("nextQuiz").hidden = true;
+  if(quizIndex>=quizData.length){
+    $("quizQuestion").textContent="🏆 কুইজ শেষ! আপনার ফলাফল: "+points+" / "+quizData.length;
+    $("quizOptions").innerHTML="";
+    $("feedback").textContent=points>=8?"অসাধারণ! খুব ভালো করেছেন।":"আরও অনুশীলন করুন।";
+    $("nextQuiz").hidden=true;
     return;
   }
   showQuiz();
 };
 
-if ("speechSynthesis" in window) {
-  speechSynthesis.onvoiceschanged = () => {};
+if("speechSynthesis" in window){
+  speechSynthesis.onvoiceschanged=()=>{};
 }
 
 renderGrid();
+
+window.addEventListener("online",()=>{
+  $("offlineStatus").textContent="🟢 আপনি অনলাইনে আছেন";
+});
+window.addEventListener("offline",()=>{
+  $("offlineStatus").textContent="📴 অফলাইন মোড";
+});
+$("offlineStatus").textContent=navigator.onLine?"🟢 আপনি অনলাইনে আছেন":"📴 অফলাইন মোড";
+
+// PWA Service Worker
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(()=>console.log("Intelligence Book PWA Ready"))
+      .catch(error=>console.error("Service Worker Error:",error));
+  });
+}
+
+// Install App
+let deferredPrompt;
+const installBtn=$("installBtn");
+
+window.addEventListener("beforeinstallprompt",event=>{
+  event.preventDefault();
+  deferredPrompt=event;
+  installBtn.style.display="block";
+});
+
+installBtn.addEventListener("click",async()=>{
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt=null;
+  installBtn.style.display="none";
+});
+
+window.addEventListener("appinstalled",()=>{
+  installBtn.style.display="none";
+});
 </script>
+
 </body>
 </html>
