@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligence Book - Smart Learning</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f0f7ff;
+  color: #172554;
+  padding: 15px;
+}
+
+header {
+  text-align: center;
+  padding: 20px 10px;
+  background: linear-gradient(135deg,#2563eb,#7c3aed);
+  color: white;
+  border-radius: 18px;
+  margin-bottom: 18px;
+}
+
+header h1 { font-size: 26px; }
+header p { margin-top: 8px; }
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tabs button, .action-btn {
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tabs button {
+  flex: 1;
+  font-size: 14px;
+}
+
+.tabs button.active {
+  background: #7c3aed;
+}
+
+.display-box {
+  background: white;
+  border: 2px solid #93c5fd;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 5px 15px #dbeafe;
+}
+
+.picture {
+  font-size: 75px;
+  margin: 10px;
+}
+
+.big-char {
+  font-size: 75px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.word {
+  font-size: 22px;
+  margin: 8px;
+  font-weight: bold;
+}
+
+.hint {
+  color: #64748b;
+  margin: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.action-btn {
+  padding: 12px 18px;
+}
+
+.action-btn:active, .tabs button:active {
+  transform: scale(.96);
+}
+
+h2 {
+  margin: 18px 0 12px;
+  font-size: 19px;
+  color: #1d4ed8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #bfdbfe;
+  border-radius: 13px;
+  padding: 12px 5px;
+  text-align: center;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.card.selected {
+  border: 3px solid #2563eb;
+  background: #eff6ff;
+}
+
+.card .letter {
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.card .emoji {
+  display: block;
+  font-size: 28px;
+  margin: 5px;
+}
+
+.card small {
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+#quizOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quiz-option {
+  background: #eff6ff;
+  border: 2px solid #bfdbfe;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+  opacity: .8;
+}
+
+#feedback {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  margin: 25px 0 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+[hidden] { display: none !important; }
+
+@media(max-width:400px) {
+  .grid { grid-template-columns: repeat(3,1fr); }
+  header h1 { font-size: 22px; }
+  .big-char { font-size: 60px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 Intelligence Book</h1>
+  <p>খেলতে খেলতে শিখি, আনন্দে বড় হই!</p>
+</header>
+
+<div class="tabs">
+  <button class="active" data-language="bn">বাংলা</button>
+  <button data-language="en">English</button>
+  <button data-language="ar">العربية</button>
+</div>
+
+<section class="display-box">
+  <div class="picture" id="picture">🐍</div>
+  <div class="big-char" id="bigChar">অ</div>
+  <div class="word" id="word">অ-তে অজগর</div>
+  <div class="hint" id="hint">বর্ণটি শিখুন এবং উচ্চারণ শুনুন</div>
+
+  <div class="actions">
+    <button class="action-btn" id="speakBtn">🔊 শুনুন</button>
+    <button class="action-btn" id="prevBtn">⬅ আগের</button>
+    <button class="action-btn" id="nextBtn">পরের ➡</button>
+  </div>
+</section>
+
+<section>
+  <h2 id="gridTitle">বাংলা বর্ণমালা</h2>
+  <div class="grid" id="letterGrid"></div>
+</section>
+
+<section class="panel">
+  <h2>🧠 শেখার কুইজ</h2>
+  <p id="quizQuestion">প্রস্তুত হলে কুইজ শুরু করুন।</p>
+  <div id="quizOptions"></div>
+  <div id="feedback"></div>
+  <div class="actions">
+    <button class="action-btn" id="startQuiz">কুইজ শুরু</button>
+    <button class="action-btn" id="nextQuiz" hidden>পরের প্রশ্ন</button>
+  </div>
+  <p id="score" style="margin-top:12px">স্কোর: ০</p>
+</section>
+
+<footer>
+  Intelligence Book © 2026 | Smart Learning
+</footer>
+
+<script>
+const bn = [
+["অ","অ-তে অজগর","🐍"],
+["আ","আ-তে আম","🥭"],
+["ই","ই-তে ইঁদুর","🐭"],
+["ঈ","ঈ-তে ঈগল","🦅"],
+["উ","উ-তে উট","🐪"],
+["ঊ","ঊ-তে ঊষা","🌅"],
+["ঋ","ঋ-তে ঋষি","🧘"],
+["এ","এ-তে একতারা","🎸"],
+["ঐ","ঐ-তে ঐরাবত","🐘"],
+["ও","ও-তে ওল","🥔"],
+["ঔ","ঔ-তে ঔষধ","💊"],
+["ক","ক-তে কলা","🍌"],
+["খ","খ-তে খরগোশ","🐰"],
+["গ","গ-তে গরু","🐄"],
+["ঘ","ঘ-তে ঘড়ি","🕒"],
+["ঙ","ঙ-তে ব্যাঙ","🐸"],
+["চ","চ-তে চাঁদ","🌙"],
+["ছ","ছ-তে ছাতা","☂️"],
+["জ","জ-তে জাহাজ","🚢"],
+["ঝ","ঝ-তে ঝরনা","🏞️"],
+["ঞ","ঞ-তে মিঞা","👨"],
+["ট","ট-তে টমেটো","🍅"],
+["ঠ","ঠ-তে ঠেলাগাড়ি","🛒"],
+["ড","ড-তে ডালিম","🍎"],
+["ঢ","ঢ-তে ঢাক","🥁"],
+["ণ","ণ-তে বর্ণ","📖"],
+["ত","ত-তে তাল","🌴"],
+["থ","থ-তে থালা","🍽️"],
+["দ","দ-তে দোয়েল","🐦"],
+["ধ","ধ-তে ধান","🌾"],
+["ন","ন-তে নৌকা","⛵"],
+["প","প-তে পাখি","🐦"],
+["ফ","ফ-তে ফুল","🌻"],
+["ব","ব-তে বই","📚"],
+["ভ","ভ-তে ভালুক","🐻"],
+["ম","ম-তে মাছ","🐟"],
+["য","য-তে যমুনা","🌊"],
+["র","র-তে রথ","🛺"],
+["ল","ল-তে লাটিম","🪀"],
+["শ","শ-তে শাপলা","🌸"],
+["ষ","ষ-তে ষাঁড়","🐂"],
+["স","স-তে সাপ","🐍"],
+["হ","হ-তে হাতি","🐘"],
+["ড়","ড়-তে আষাঢ়","🌧️"],
+["ঢ়","ঢ়-যুক্ত শব্দ","📖"],
+["য়","য়-যুক্ত শব্দ","📖"],
+["ৎ","ৎ-যুক্ত শব্দ","📖"],
+["ং","ং-যুক্ত শব্দ","📖"],
+["ঃ","ঃ-যুক্ত শব্দ","📖"],
+["ঁ","ঁ-যুক্ত শব্দ","📖"]
+].map(x=>({char:x[0],word:x[1],emoji:x[2],speak:x[1]}));
+
+const en = [
+["A","A for Apple","🍎"],["B","B for Ball","⚽"],
+["C","C for Cat","🐱"],["D","D for Dog","🐶"],
+["E","E for Elephant","🐘"],["F","F for Fish","🐟"],
+["G","G for Goat","🐐"],["H","H for House","🏠"],
+["I","I for Ice cream","🍦"],["J","J for Jug","🏺"],
+["K","K for Kite","🪁"],["L","L for Lion","🦁"],
+["M","M for Mango","🥭"],["N","N for Nest","🪺"],
+["O","O for Orange","🍊"],["P","P for Parrot","🦜"],
+["Q","Q for Queen","👑"],["R","R for Rabbit","🐰"],
+["S","S for Sun","☀️"],["T","T for Tiger","🐯"],
+["U","U for Umbrella","☂️"],["V","V for Van","🚐"],
+["W","W for Watch","⌚"],["X","X for Xylophone","🎼"],
+["Y","Y for Yacht","🛥️"],["Z","Z for Zebra","🦓"]
+].map(x=>({char:x[0],word:x[1],emoji:x[2],speak:x[1]}));
+
+const ar = [
+["أ","ألف - أرنب","🐰","ألف"],
+["ب","باء - بطة","🦆","باء"],
+["ت","تاء - تفاح","🍎","تاء"],
+["ث","ثاء - ثعلب","🦊","ثاء"],
+["ج","جيم - جمل","🐪","جيم"],
+["ح","حاء - حصان","🐎","حاء"],
+["خ","خاء - خبز","🍞","خاء"],
+["د","دال - دب","🐻","دال"],
+["ذ","ذال - ذرة","🌽","ذال"],
+["ر","راء - رمان","🍎","راء"],
+["ز","زاي - زهرة","🌹","زاي"],
+["س","سين - سمكة","🐟","سين"],
+["ش","شين - شمس","☀️","شين"],
+["ص","صاد - صقر","🦅","صاد"],
+["ض","ضاد - ضفدع","🐸","ضاد"],
+["ط","طاء - طائرة","✈️","طاء"],
+["ظ","ظاء - ظرف","✉️","ظاء"],
+["ع","عين - عنب","🍇","عين"],
+["غ","غين - غزال","🦌","غين"],
+["ف","فاء - فراشة","🦋","فاء"],
+["ق","قاف - قمر","🌙","قاف"],
+["ك","كاف - كتاب","📚","كاف"],
+["ل","لام - ليمون","🍋","لام"],
+["م","ميم - موز","🍌","ميم"],
+["ن","نون - نمر","🐯","نون"],
+["ه","هاء - هلال","🌙","هاء"],
+["و","واو - وردة","🌹","واو"],
+["ي","ياء - يد","✋","ياء"]
+].map(x=>({char:x[0],word:x[1],emoji:x[2],speak:x[3]}));
+
+const languages = {
+ bn:{items:bn, title:"বাংলা বর্ণমালা", voice:"bn-BD"},
+ en:{items:en, title:"English Alphabet", voice:"en-US"},
+ ar:{items:ar, title:"الحروف العربية", voice:"ar-SA"}
+};
+
+let language="bn";
+let currentIndex=0;
+let quizData=[];
+let quizIndex=0;
+let points=0;
+let answered=false;
+
+const $ = id=>document.getElementById(id);
+
+function currentItems(){
+ return languages[language].items;
+}
+
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  alert("আপনার ব্রাউজারে ভয়েস সুবিধা নেই।");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utter=new SpeechSynthesisUtterance(text);
+ utter.lang=languages[language].voice;
+ utter.rate=.8;
+ speechSynthesis.speak(utter);
+}
+
+function showLetter(index){
+ const items=currentItems();
+ currentIndex=(index+items.length)%items.length;
+ const item=items[currentIndex];
+
+ $("bigChar").textContent=item.char;
+ $("word").textContent=item.word;
+ $("picture").textContent=item.emoji;
+ $("hint").textContent="বর্ণ "+(currentIndex+1)+" / "+items.length;
+
+ document.querySelectorAll(".card").forEach((card,i)=>{
+  card.classList.toggle("selected",i===currentIndex);
+ });
+
+ $("speakBtn").onclick=()=>speak(item.speak);
+}
+
+function renderGrid(){
+ const items=currentItems();
+ $("letterGrid").innerHTML="";
+
+ items.forEach((item,index)=>{
+  const card=document.createElement("button");
+  card.className="card";
+  card.type="button";
+
+  const letter=document.createElement("span");
+  letter.className="letter";
+  letter.textContent=item.char;
+
+  const emoji=document.createElement("span");
+  emoji.className="emoji";
+  emoji.textContent=item.emoji;
+
+  const small=document.createElement("small");
+  small.textContent=item.word;
+
+  card.append(letter,emoji,small);
+  card.addEventListener("click",()=>{
+   showLetter(index);
+   speak(item.speak);
+  });
+
+  $("letterGrid").appendChild(card);
+ });
+ showLetter(currentIndex);
+}
+
+document.querySelectorAll("[data-language]").forEach(button=>{
+ button.addEventListener("click",()=>{
+  language=button.dataset.language;
+  currentIndex=0;
+
+  document.querySelectorAll("[data-language]").forEach(b=>
+   b.classList.toggle("active",b===button)
+  );
+
+  $("gridTitle").textContent=languages[language].title;
+  renderGrid();
+ });
+});
+
+$("prevBtn").onclick=()=>showLetter(currentIndex-1);
+$("nextBtn").onclick=()=>showLetter(currentIndex+1);
+
+function shuffle(items){
+ return [...items].sort(()=>Math.random()-.5);
+}
+
+function startQuiz(){
+ const items=currentItems();
+ quizData=shuffle(items).slice(0,10);
+ quizIndex=0;
+ points=0;
+ showQuiz();
+}
+
+function showQuiz(){
+ answered=false;
+ const item=quizData[quizIndex];
+ const items=currentItems();
+
+ $("quizQuestion").textContent=
+  "কোনটি "+item.word+" এর সঠিক বর্ণ?";
+
+ const wrong=shuffle(items.filter(x=>x.char!==item.char)).slice(0,3);
+ const options=shuffle([item,...wrong]);
+
+ $("quizOptions").innerHTML="";
+ $("feedback").textContent="";
+ $("nextQuiz").hidden=true;
+
+ options.forEach(option=>{
+  const button=document.createElement("button");
+  button.className="quiz-option";
+  button.textContent=option.char;
+
+  button.onclick=()=>{
+   if(answered)return;
+   answered=true;
+
+   if(option.char===item.char){
+    points++;
+    $("feedback").textContent="🎉 সঠিক উত্তর!";
+    $("feedback").style.color="green";
+   }else{
+    $("feedback").textContent="❌ সঠিক উত্তর: "+item.char;
+    $("feedback").style.color="red";
+   }
+
+   [...$("quizOptions").children].forEach(btn=>{
+    btn.disabled=true;
+   });
+
+   $("score").textContent="স্কোর: "+points+" / "+(quizIndex+1);
+   $("nextQuiz").hidden=false;
+  };
+
+  $("quizOptions").appendChild(button);
+ });
+}
+
+$("startQuiz").onclick=startQuiz;
+
+$("nextQuiz").onclick=()=>{
+ quizIndex++;
+ if(quizIndex>=quizData.length){
+  $("quizQuestion").textContent=
+   "🏆 কুইজ শেষ! আপনার ফলাফল: "+points+" / "+quizData.length;
+  $("quizOptions").innerHTML="";
+  $("feedback").textContent=
+   points>=8?"অসাধারণ! খুব ভালো করেছেন।":"আরও অনুশীলন করুন।";
+  $("nextQuiz").hidden=true;
+  return;
+ }
+ showQuiz();
+};
+
+renderGrid();
+</script>
+</body>
+</html>
