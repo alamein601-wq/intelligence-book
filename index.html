@@ -1,19 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#3157d5">
-<meta name="description" content="শিশুদের বাংলা, ইংরেজি, আরবি ও ইসলামিক শিক্ষার স্মার্ট বই">
+<meta name="description" content="শিশুদের বাংলা, ইংরেজি, আরবি, প্রকৃতি, ছড়া ও ইসলামিক শিক্ষার স্মার্ট বই">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Intelligence Book">
 <title>Intelligence Book - Smart Learning</title>
 
 <link rel="manifest" href="./manifest.json">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icon.svg">
+<link rel="icon" href="./logo.png" type="image/png">
+<link rel="apple-touch-icon" href="./logo.png">
 
 <style>
 * {
@@ -29,37 +28,79 @@ body {
 }
 header {
   text-align: center;
-  padding: 20px 12px;
+  padding: 18px 12px;
   background: linear-gradient(135deg,#2563eb,#7c3aed);
   color: white;
   border-radius: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   box-shadow: 0 8px 20px rgba(37,99,235,.2);
 }
-header h1 {font-size:26px}
-header p {margin-top:8px;font-size:15px}
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #ffffff;
+  border: 2px solid rgba(255,255,255,.7);
+}
+header h1 {font-size:25px}
+header p {margin-top:7px;font-size:14px}
+
 .tabs {
   display:flex;
   gap:8px;
-  margin-bottom:16px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
 }
 .tabs button,.action-btn {
   border:none;
-  padding:12px;
+  padding:11px 12px;
   border-radius:12px;
   background:#2563eb;
   color:white;
   font-weight:bold;
   cursor:pointer;
 }
-.tabs button {flex:1;font-size:14px}
+.tabs button {flex:1 1 calc(33.33% - 8px);min-width:95px;font-size:13px}
 .tabs button.active {background:#7c3aed}
+
+.sub-tabs {
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding-bottom:6px;
+  margin-bottom:14px;
+}
+.sub-tabs button {
+  flex:0 0 auto;
+  border:1px solid #bfdbfe;
+  background:#ffffff;
+  color:#1e3a8a;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.sub-tabs button.active {
+  background:#059669;
+  color:#ffffff;
+  border-color:#059669;
+}
+
 .display-box {
   background:white;
   border:2px solid #93c5fd;
   border-radius:22px;
   text-align:center;
-  padding:22px 16px;
+  padding:20px 15px;
   margin-bottom:18px;
   box-shadow:0 8px 20px rgba(219,234,254,.9);
   overflow:hidden;
@@ -76,21 +117,27 @@ header p {margin-top:8px;font-size:15px}
   100% {transform:translateY(0) scale(1)}
 }
 .picture {
-  font-size:80px;
-  margin:8px auto 12px;
-  display:inline-block;
+  font-size:76px;
+  margin:6px auto 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:92px;
+  min-height:92px;
+  border-radius:22px;
   animation:floatSlow 3s ease-in-out infinite;
   cursor:pointer;
 }
 .picture.moving {animation:animalMove .9s ease-in-out}
 .big-char {
-  font-size:74px;
+  font-size:48px;
   font-weight:bold;
   color:#2563eb;
-  line-height:1.25;
+  line-height:1.3;
+  overflow-wrap:anywhere;
 }
 .word {
-  font-size:22px;
+  font-size:21px;
   margin:8px 0 4px;
   font-weight:bold;
   color:#0f172a;
@@ -99,13 +146,14 @@ header p {margin-top:8px;font-size:15px}
   background:#fef9c3;
   border:1px dashed #eab308;
   color:#713f12;
-  padding:10px 14px;
+  padding:11px 14px;
   border-radius:14px;
   margin:10px auto;
-  max-width:520px;
-  font-size:16px;
+  max-width:600px;
+  font-size:15px;
   font-weight:600;
-  line-height:1.5;
+  line-height:1.6;
+  white-space:pre-line;
 }
 .hint {color:#64748b;margin-top:6px;font-size:14px}
 .actions {
@@ -115,9 +163,10 @@ header p {margin-top:8px;font-size:15px}
   flex-wrap:wrap;
   margin-top:14px;
 }
-.action-btn {padding:11px 15px;font-size:14px}
+.action-btn {padding:10px 14px;font-size:13px}
 .action-btn.rhyme-btn {background:#059669}
-.action-btn:active,.tabs button:active {transform:scale(.96)}
+.action-btn:active,.tabs button:active,.sub-tabs button:active {transform:scale(.96)}
+
 h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
 .grid {
   display:grid;
@@ -128,7 +177,7 @@ h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
   background:white;
   border:1px solid #bfdbfe;
   border-radius:14px;
-  padding:12px 6px;
+  padding:11px 6px;
   text-align:center;
   cursor:pointer;
   min-width:0;
@@ -136,15 +185,21 @@ h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
 .card.selected {border:3px solid #2563eb;background:#eff6ff}
 .card .letter {
   display:block;
-  font-size:30px;
+  font-size:20px;
   font-weight:bold;
   color:#2563eb;
   line-height:1.25;
+  overflow-wrap:anywhere;
 }
 .card .emoji {
-  display:inline-block;
-  font-size:30px;
-  margin:5px 0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  font-size:28px;
+  margin:5px auto;
   animation:floatSlow 3.5s ease-in-out infinite;
 }
 .card small {
@@ -153,6 +208,7 @@ h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
   font-size:12px;
   overflow-wrap:anywhere;
 }
+
 .panel {
   background:white;
   padding:18px;
@@ -170,11 +226,12 @@ h2 {margin:18px 0 12px;font-size:19px;color:#1d4ed8}
 .quiz-option {
   background:#eff6ff;
   border:2px solid #bfdbfe;
-  padding:14px;
+  padding:13px 8px;
   border-radius:12px;
-  font-size:24px;
+  font-size:17px;
   font-weight:bold;
   cursor:pointer;
+  overflow-wrap:anywhere;
 }
 .quiz-option:disabled {cursor:default;opacity:.85}
 #feedback {margin-top:15px;font-weight:bold;font-size:16px}
@@ -187,7 +244,7 @@ footer {
 .install-btn {
   display:none;
   width:100%;
-  margin-bottom:15px;
+  margin-bottom:14px;
   padding:13px;
   border:0;
   border-radius:12px;
@@ -197,10 +254,10 @@ footer {
   font-size:15px;
 }
 [hidden] {display:none!important}
-@media(max-width:400px) {
-  header h1 {font-size:22px}
-  .big-char {font-size:58px}
-  .picture {font-size:66px}
+@media(max-width:420px) {
+  header h1 {font-size:21px}
+  .big-char {font-size:38px}
+  .picture {font-size:62px}
 }
 </style>
 </head>
@@ -208,16 +265,33 @@ footer {
 <body>
 
 <header>
-  <h1>📚 Intelligence Book</h1>
-  <p>খেলতে খেলতে শিখি, ছড়ায় ছড়ায় আনন্দে বড় হই!</p>
+  <div class="brand-row">
+    <img src="./logo.png" alt="Intelligence Book Logo" class="brand-logo" onerror="this.style.display='none'">
+    <h1>📚 Intelligence Book</h1>
+  </div>
+  <p>খেলতে খেলতে শিখি, ছড়ায় ছড়ায় ও সূরায় আনন্দে বড় হই!</p>
 </header>
 
 <button class="install-btn" id="installBtn">📲 অ্যাপ ইনস্টল করুন</button>
 
-<div class="tabs">
-  <button class="active" data-language="bn">বাংলা</button>
-  <button data-language="en">English</button>
-  <button data-language="ar">العربية</button>
+<div class="tabs" id="mainLangTabs">
+  <button class="active" data-lang="bn">বাংলা</button>
+  <button data-lang="en">English</button>
+  <button data-lang="ar">العربية</button>
+</div>
+
+<div class="sub-tabs" id="topicTabs">
+  <button class="active" data-topic="alphabet">🔤 বর্ণমালা</button>
+  <button data-topic="colors">🎨 ১০ রঙ</button>
+  <button data-topic="trees">🌳 ১০ গাছ</button>
+  <button data-topic="fruits">🍎 ১০ ফল</button>
+  <button data-topic="nationalAnimals">🐯 ১০ জাতীয় পশু</button>
+  <button data-topic="fishes">🐟 ১০ মাছ</button>
+  <button data-topic="flowers">🌸 ১০ ফুল</button>
+  <button data-topic="animalSounds">🐾 ১০ প্রাণীর ডাক</button>
+  <button data-topic="birdSounds">🐦 ১০ পাখির ডাক</button>
+  <button data-topic="rhymes">🎶 ছড়া ও কবিতা</button>
+  <button data-topic="surahs">🕌 ২৫টি ছোট সূরা</button>
 </div>
 
 <section class="display-box">
@@ -225,10 +299,10 @@ footer {
   <div class="big-char" id="bigChar">অ</div>
   <div class="word" id="word">অ-তে অজগর</div>
   <div class="rhyme-box" id="rhymeText">অ-তে অজগরটি আসছে তেড়ে, আমটি আমি খাব পেড়ে।</div>
-  <div class="hint" id="hint">বর্ণ ১ / ৫০</div>
+  <div class="hint" id="hint">আইটেম ১ / ৫০</div>
   <div class="actions">
     <button class="action-btn" id="speakBtn">🔊 উচ্চারণ</button>
-    <button class="action-btn rhyme-btn" id="rhymeBtn">🎵 ছড়া শুনুন</button>
+    <button class="action-btn rhyme-btn" id="rhymeBtn">🎵 ছড়া / বিস্তারিত শুনুন</button>
     <button class="action-btn" id="prevBtn">⬅ আগের</button>
     <button class="action-btn" id="nextBtn">পরের ➡</button>
   </div>
@@ -257,7 +331,7 @@ footer {
 </footer>
 
 <script>
-const bn = [
+const bnAlphabet = [
 ["অ","অ-তে অজগর","🐍","অ-তে অজগরটি আসছে তেড়ে, আমটি আমি খাব পেড়ে।"],
 ["আ","আ-তে আম","🥭","আ-তে আমটি ভারি মিষ্টি, রোদে ঝিকমিক করে দৃষ্টি।"],
 ["ই","ই-তে ইঁদুর","🐭","ই-তে ইঁদুর ছানা ছুটে চলে, গর্তের ভেতর লুকায় ছলে।"],
@@ -310,7 +384,7 @@ const bn = [
 ["ঁ","ঁ-যুক্ত শব্দ","📖","চাঁদের আলোয় হাঁসি মেলে, স্বপ্ন আঁকি রাতের কোলে।"]
 ];
 
-const en = [
+const enAlphabet = [
 ["A","A for Apple","🍎","A for Apple sweet and red, crunch a bite before you're fed!"],
 ["B","B for Ball","⚽","B for Ball bounce so high, jumping up toward the sky!"],
 ["C","C for Cat","🐱","C for Cat says meow, meow, purring soft and happy now!"],
@@ -339,256 +413,518 @@ const en = [
 ["Z","Z for Zebra","🦓","Z for Zebra black and white!"]
 ];
 
-const ar = [
-["أ","ألف - أرنب","🐰","ألف أرنب يقفز فرحًا، في الحقول يمضي مرحًا.","ألف"],
-["ب","باء - بطة","🦆","باء بطة تسبح في الماء، تغني لحنًا بكل صفاء.","باء"],
-["ت","تاء - تفاح","🍎","تاء تفاح أحمر حلو، طعمه شهي في كل جو.","تاء"],
-["ث","ثاء - ثعلب","🦊","ثاء ثعلب ماكر ذكي، يجري بين الأشجار.","ثاء"],
-["ج","جيم - جمل","🐪","جيم جمل سفينة الصحراء، يصبر دومًا.","جيم"],
-["ح","حاء - حصان","🐎","حاء حصان يعدو سريعًا، في الميدان.","حاء"],
-["خ","خاء - خبز","🍞","خاء خبز دافئ لذيذ، في الصباح.","خاء"],
-["د","دال - دب","🐻","دال دب يمشي بهدوء، يحب العسل.","دال"],
-["ذ","ذال - ذرة","🌽","ذال ذرة صفراء جميلة.","ذال"],
-["ر","راء - رمان","🍎","راء رمان حباته نور.","راء"],
-["ز","زاي - زهرة","🌹","زاي زهرة تفوح عطرًا.","زاي"],
-["س","سين - سمكة","🐟","سين سمكة تسبح بمهارة.","سين"],
-["ش","شين - شمس","☀️","شين شمس تشرق بنور.","شين"],
-["ص","صاد - صقر","🦅","صاد صقر يحلق عاليًا.","صاد"],
-["ض","ضاد - ضفدع","🐸","ضاد ضفدع ينط في النهر.","ضاد"],
-["ط","طاء - طائرة","✈️","طاء طائرة تطير في السماء.","طاء"],
-["ظ","ظاء - ظرف","✉️","ظاء ظرف يحمل رسالة.","ظاء"],
-["ع","عين - عنب","🍇","عين عنب عناقيد تتدلى.","عين"],
-["غ","غين - غزال","🦌","غين غزال رشيق الخطى.","غين"],
-["ف","فاء - فراشة","🦋","فاء فراشة بألوان زاهية.","فاء"],
-["ق","قاف - قمر","🌙","قاف قمر يضيء الليالي.","قاف"],
-["ك","كاف - كتاب","📚","كاف كتاب خير صديق.","كاف"],
-["ل","لام - ليمون","🍋","لام ليمون منعش وقوي.","لام"],
-["م","ميم - موز","🍌","ميم موز أصفر وطري.","ميم"],
-["ن","نون - نمر","🐯","نون نمر مخطط قوي.","نون"],
-["ه","هاء - هلال","🌙","هاء هلال يطل جديدًا.","هاء"],
-["و","واو - وردة","🌹","واو وردة تفتح باكرًا.","واو"],
-["ي","ياء - يد","✋","ياء يد تعمل بإتقان.","ياء"]
+const arAlphabet = [
+["أ","আলিফুন — আল্লাহ","🕌","আলিফুন — আল্লাহ, দয়াময় মহান রব।","আলিফুন আল্লাহ"],
+["ب","বা — বাইতুল্লাহ","🕋","বা — বাইতুল্লাহ, আল্লাহর পবিত্র ঘর।","বা বাইতুল্লাহ"],
+["ت","তা — তামরুন (খেজুর)","🌴","তা — তামরুন, মিষ্টি খেজুর ফল।","তা তামরুন"],
+["ث","ছা — ছাওবুন (পোশাক)","👕","ছা — ছাওবুন, পরিচ্ছন্ন পোশাক।","ছা ছাওবুন"],
+["ج","জিম — জান্নাতুন (জান্নাত)","🌿","জিম — জান্নাতুন, শান্তির জান্নাত।","জিম জান্নাতুন"],
+["ح","হা — হাবলুন (রশি)","🪢","হা — হাবলুন, মজবুত রশি।","হা হাবলুন"],
+["خ","খ — খুবযুন (রুটি)","🍞","খ — খুবযুন, নরম রুটি।","খ খুবযুন"],
+["د","দাল — দারুন (ঘর)","🏠","দাল — দারুন, সুন্দর ঘর।","দাল দারুন"],
+["ذ","যাল — যিকরুন (স্মরণ)","📖","যাল — যিকরুন, আল্লাহকে স্মরণ।","যাল যিকরুন"],
+["ر","র — রহমাতুন (রহমত)","🤍","র — রহমাতুন, আল্লাহর অসীম রহমত।","র রহমাতুন"],
+["ز","যা — যাহরুন (ফুল)","🌸","যা — যাহরুন, সুন্দর ফুল।","যা যাহরুন"],
+["س","সিন — সালামুন (শান্তি)","🕊️","সিন — সালামুন, শান্তি ও কল্যাণ।","সিন সালামুন"],
+["ش","শিন — শামসুন (সূর্য)","☀️","শিন — শামসুন, আলোকিত সূর্য।","শিন শামসুন"],
+["ص","সদ — সাবরুন (ধৈর্য)","🌱","সদ — সাবরুন, সুন্দর ধৈর্য।","সদ সাবরুন"],
+["ض","দদ — দাইফুন (মেহমান)","🤝","দদ — দাইফুন, সম্মানিত মেহমান।","দদ দাইফুন"],
+["ط","ত্বা — ত্বাইরুন (পাখি)","🐦","ত্বা — ত্বাইরুন, আকাশে ওড়া পাখি।","ত্বা ত্বাইরুন"],
+["ظ","য্বা — য্বাফরুন (বিজয়)","🏆","য্বা — য্বাফরুন, সুন্দর বিজয়।","য্বা য্বাফরুন"],
+["ع","আইন — ইলমুন (জ্ঞান)","📚","আইন — ইলমুন, আলোর জ্ঞান।","আইন ইলমুন"],
+["غ","গাইন — গাফুরুন (ক্ষমাশীল)","🤲","গাইন — গাফুরুন, পরম ক্ষমাশীল।","গাইন গাফুরুন"],
+["ف","ফা — ফাজরুন (ভোর)","🌅","ফা — ফাজরুন, ফজরের আলো।","ফা ফাজরুন"],
+["ق","ক্বাফ — ক্বুরআনুন (কুরআন)","📗","ক্বাফ — ক্বুরআনুন, পবিত্র কুরআন।","ক্বাফ ক্বুরআনুন"],
+["ك","কাফ — কিতাবুন (বই)","📘","কাফ — কিতাবুন, শিক্ষার বই।","কাফ কিতাবুন"],
+["ل","লাম — লাইলুন (রাত)","🌙","লাম — লাইলুন, শান্ত রাত।","লাম লাইলুন"],
+["م","মিম — মাসজিদুন (মসজিদ)","🕌","মিম — মাসজিদুন, আল্লাহর ঘর।","মিম মাসজিদুন"],
+["ن","নুন — নূরুন (আলো)","✨","নুন — নূরুন, পবিত্র আলো।","নুন নূরুন"],
+["هـ","হা — হিদায়াতুন (পথনির্দেশ)","🧭","হা — হিদায়াতুন, সঠিক পথ।","হা হিদায়াতুন"],
+["و","ওয়াও — ওয়ারদুন (গোলাপ)","🌹","ওয়াও — ওয়ারদুন, লাল গোলাপ।","ওয়াও ওয়ারদুন"],
+["ي","ইয়া — ইয়াদুন (হাত)","✋","ইয়া — ইয়াদুন, কাজের হাত।","ইয়া ইয়াদুন"]
 ];
 
-const makeItems = (data, language) => data.map(x => ({
-  char:x[0],
-  word:x[1],
-  emoji:x[2],
-  rhyme:x[3],
-  speak:x[4] || x[1],
-  rhymeSpeak:x[3],
-  lang:language
-}));
+const colorsData = [
+  ["লাল (Red)","লাল রঙ","🔴","আপেল ও গোলাপের রঙ লাল।","লাল রঙ"],
+  ["নীল (Blue)","নীল রঙ","🔵","আকাশ ও সাগরের রঙ নীল।","নীল রঙ"],
+  ["সবুজ (Green)","সবুজ রঙ","🟢","গাছের পাতা ও ঘাসের রঙ সবুজ।","সবুজ রঙ"],
+  ["হলুদ (Yellow)","হলুদ রঙ","🟡","পাকা কলা ও সূর্যের আলো হলুদ।","হলুদ রঙ"],
+  ["কমলা (Orange)","কমলা রঙ","🟠","কমলা লেবুর রঙ কমলা।","কমলা রঙ"],
+  ["বেগুনি (Purple)","বেগুনি রঙ","🟣","বেগুনের রঙ বেগুনি।","বেগুনি রঙ"],
+  ["গোলাপি (Pink)","গোলাপি রঙ","🩷","পদ্ম ও অনেক ফুলের রঙ গোলাপি।","গোলাপি রঙ"],
+  ["বাদামি (Brown)","বাদামি রঙ","🟤","গাছের গুঁড়ি ও মাটির রঙ বাদামি।","বাদামি রঙ"],
+  ["কালো (Black)","কালো রঙ","⚫","কাক ও রাতের আঁধার কালো।","কালো রঙ"],
+  ["সাদা (White)","সাদা রঙ","⚪","মেঘ ও দুধের রঙ সাদা।","সাদা রঙ"]
+];
 
-const languages = {
-  bn:{items:makeItems(bn,"bn"),title:"বাংলা বর্ণমালা",voice:"bn-BD",dir:"ltr",pitch:1.05,rate:.85},
-  en:{items:makeItems(en,"en"),title:"English Alphabet",voice:"en-US",dir:"ltr",pitch:1.06,rate:.86},
-  ar:{items:makeItems(ar,"ar"),title:"الحروف العربية",voice:"ar-SA",dir:"rtl",pitch:1.04,rate:.82}
+const treesData = [
+  ["আম গাছ","আম গাছ (Mango Tree)","🌳","আম গাছ আমাদের পরিচিত ফল গাছ, গ্রীষ্মে মিষ্টি আম দেয়।"],
+  ["কাঁঠাল গাছ","কাঁঠাল গাছ (Jackfruit Tree)","🌲","কাঁঠাল গাছ বাংলাদেশের জাতীয় ফলের গাছ।"],
+  ["বট গাছ","বট গাছ (Banyan Tree)","🌳","বট গাছ অনেক বড় ও ছায়াদানকারী গাছ।"],
+  ["নারিকেল গাছ","নারিকেল গাছ (Coconut Tree)","🌴","নারিকেল গাছ লম্বা ও উপকূলের পরিচিত গাছ।"],
+  ["তাল গাছ","তাল গাছ (Palm Tree)","🌴","তাল গাছ উঁচু গাছ, পাকা তাল খুব সুস্বাদু।"],
+  ["নিম গাছ","নিম গাছ (Neem Tree)","🌿","নিম গাছ ঔষধি গাছ, এর পাতা উপকারী।"],
+  ["পেয়ারা গাছ","পেয়ারা গাছ (Guava Tree)","🌳","পেয়ারা গাছ থেকে সুস্বাদু পেয়ারা ফল পাওয়া যায়।"],
+  ["কলা গাছ","কলা গাছ (Banana Plant)","🍌","কলা গাছে সারা বছর কলা ধরে।"],
+  ["জাম গাছ","জাম গাছ (Blackberry Tree)","🌳","জাম গাছে কালো মিষ্টি জাম ফলে।"],
+  ["সুন্দরী গাছ","সুন্দরী গাছ (Sundari Tree)","🌲","সুন্দরবনের প্রধান বৃক্ষ সুন্দরী গাছ।"]
+];
+
+const fruitsData = [
+  ["আম","আম (Mango)","🥭","আম ফলের রাজা, পাকা আম খুব মিষ্টি।"],
+  ["কাঁঠাল","কাঁঠাল (Jackfruit)","🍈","কাঁঠাল বাংলাদেশের জাতীয় ফল।"],
+  ["কলা","কলা (Banana)","🍌","কলা পুষ্টিকর ও শক্তিদায়ক ফল।"],
+  ["আপেল","আপেল (Apple)","🍎","আপেল লাল বা সবুজ রঙের সুস্বাদু ফল।"],
+  ["কমলা","কমলা (Orange)","🍊","কমলা ভিটামিন সি সমৃদ্ধ রসালো ফল।"],
+  ["পেয়ারা","পেয়ারা (Guava)","🍏","পেয়ারা কাঁচা ও পাকা দুভাবেই খাওয়া যায়।"],
+  ["তরমুজ","তরমুজ (Watermelon)","🍉","তরমুজ গরমের দিনে খুব ঠান্ডা ও রসালো ফল।"],
+  ["আনারস","আনারস (Pineapple)","🍍","আনারস টক-মিষ্টি স্বাদের দারুণ ফল।"],
+  ["লিচু","লিচু (Lychee)","🍒","লিচু ছোট ও খুব মিষ্টি গ্রীষ্মকালীন ফল।"],
+  ["পেঁপে","পেঁপে (Papaya)","🥭","পেঁপে হজমের জন্য খুব উপকারী ফল।"]
+];
+
+const nationalAnimalsData = [
+  ["রয়েল বেঙ্গল টাইগার","বাংলাদেশ - রয়েল বেঙ্গল টাইগার","🐅","রয়েল বেঙ্গল টাইগার বাংলাদেশের জাতীয় পশু।"],
+  ["বেঙ্গল টাইগার","ভারত - বেঙ্গল টাইগার","🐯","বেঙ্গল টাইগার ভারতের জাতীয় পশু।"],
+  ["মার্খোর","পাকিস্তান - মার্খোর","🐐","মার্খোর পাকিস্তানের জাতীয় পশু।"],
+  ["জায়ান্ট পান্ডা","চীন - জায়ান্ট পান্ডা","🐼","জায়ান্ট পান্ডা চীনের জাতীয় পশু।"],
+  ["ক্যাঙ্গারু","অস্ট্রেলিয়া - ক্যাঙ্গারু","🦘","ক্যাঙ্গারু অস্ট্রেলিয়ার পরিচিত জাতীয় পশু।"],
+  ["আমেরিকান বাইসন","যুক্তরাষ্ট্র - আমেরিকান বাইসন","🦬","আমেরিকান বাইসন যুক্তরাষ্ট্রের জাতীয় পশু।"],
+  ["হরিণ","কানাডা - হরিণ","🦌","হরিণ কানাডার পরিচিত জাতীয় পশু।"],
+  ["আফ্রিকান হাতি","দক্ষিণ আফ্রিকা - হাতি","🐘","আফ্রিকান হাতি বিশাল ও শক্তিশালী প্রাণী।"],
+  ["তুষার চিতা","আফগানিস্তান - তুষার চিতা","🐆","তুষার চিতা পাহাড়ি অঞ্চলের প্রাণী।"],
+  ["কমোডো ড্রাগন","ইন্দোনেশিয়া - কমোডো ড্রাগন","🦎","কমোডো ড্রাগন ইন্দোনেশিয়ার বিশেষ প্রাণী।"]
+];
+
+const fishesData = [
+  ["ইলিশ","ইলিশ মাছ (Hilsa)","🐟","ইলিশ বাংলাদেশের জাতীয় মাছ, খুব সুস্বাদু।"],
+  ["রুই","রুই মাছ (Rohu)","🐠","রুই মিঠাপানির জনপ্রিয় মাছ।"],
+  ["কাতলা","কাতলা মাছ (Catla)","🐟","কাতলা বড় আকারের সুস্বাদু মাছ।"],
+  ["কই","কই মাছ (Climbing Perch)","🐡","কই মাছ পুষ্টিকর ও দেশীয় মাছ।"],
+  ["শিং","শিং মাছ (Stinging Catfish)","🐟","শিং মাছ স্বাস্থ্যের জন্য বেশ উপকারী।"],
+  ["মাগুর","মাগুর মাছ (Walking Catfish)","🐠","মাগুর দেশীয় মিঠাপানির মাছ।"],
+  ["পাবদা","পাবদা মাছ (Butter Catfish)","🐟","পাবদা খুব নরম ও সুস্বাদু মাছ।"],
+  ["টেংরা","টেংরা মাছ (Tengra)","🐡","টেংরা ছোট দেশীয় মাছ।"],
+  ["চিংড়ি","চিংড়ি মাছ (Shrimp / Prawn)","🦐","চিংড়ি নদী ও সাগরে পাওয়া যায়।"],
+  ["হাঙর","হাঙর মাছ (Shark)","🦈","হাঙর গভীর সাগরের বড় মাছ।"]
+];
+
+const flowersData = [
+  ["শাপলা","শাপলা (Water Lily)","🌸","শাপলা বাংলাদেশের জাতীয় ফুল।"],
+  ["গোলাপ","গোলাপ (Rose)","🌹","গোলাপ ফুলের রানি, খুব সুন্দর গন্ধ ছড়ায়।"],
+  ["সূর্যমুখী","সূর্যমুখী (Sunflower)","🌻","সূর্যমুখী ফুল সূর্যের দিকে মুখ করে থাকে।"],
+  ["পদ্ম","পদ্ম (Lotus)","🪷","পদ্ম জলে ফোটে এবং দেখতে অপরূপ।"],
+  ["জবা","জবা (Hibiscus)","🌺","জবা লাল, গোলাপি বা হলুদ রঙের হয়।"],
+  ["বেলি","বেলি (Jasmine)","🌼","বেলি ফুলের মিষ্টি সুবাস সবার মন ভরে।"],
+  ["শিউলি","শিউলি (Night Jasmine)","🌼","শরৎ সকালে শিউলি ফুল ঝরে পড়ে।"],
+  ["গাঁদা","গাঁদা (Marigold)","🌼","গাঁদা হলুদ ও কমলা রঙের উৎসবের ফুল।"],
+  ["রজনীগন্ধা","রজনীগন্ধা (Tuberose)","🌷","রজনীগন্ধা সাদা রঙের সুগন্ধি ফুল।"],
+  ["টিউলিপ","টিউলিপ (Tulip)","🌷","টিউলিপ রঙিন ও আকর্ষণীয় ফুল।"]
+];
+
+const animalSoundsData = [
+  ["ঘেউ ঘেউ","কুকুরের ডাক - ঘেউ ঘেউ","🐶","কুকুর ডাকে ঘেউ ঘেউ।"],
+  ["ম্যাঁও","বিড়ালের ডাক - ম্যাঁও","🐱","বিড়াল ডাকে ম্যাঁও ম্যাঁও।"],
+  ["হাম্বা","গরুর ডাক - হাম্বা","🐄","গরু ডাকে হাম্বা।"],
+  ["ম্যাঁ","ছাগলের ডাক - ম্যাঁ","🐐","ছাগল ডাকে ম্যাঁ ম্যাঁ।"],
+  ["হ্রেষা","ঘোড়ার ডাক - হ্রেষা","🐴","ঘোড়া ডাকে চিঁহিঁহিঁ বা হ্রেষা।"],
+  ["গর্জন","সিংহ ও বাঘের ডাক - গর্জন","🦁","সিংহ ও বাঘের ডাককে গর্জন বলে।"],
+  ["বৃংহন","হাতির ডাক - বৃংহন","🐘","হাতি শুঁড় তুলে জোর ডাক ছাড়ে।"],
+  ["কুঁকড়ুঁ কুঁ","মোরগের ডাক - কুঁকড়ুঁ কুঁ","🐓","সকালে মোরগ ডাকে কুঁকড়ুঁ কুঁ।"],
+  ["ঘ্যাঙর ঘ্যাঙ","ব্যাঙের ডাক - ঘ্যাঙর ঘ্যাঙ","🐸","বৃষ্টি এলে ব্যাঙ ডাকে ঘ্যাঙর ঘ্যাঙ।"],
+  ["হিসহিস","সাপের ডাক - হিসহিস","🐍","সাপ হিসহিস শব্দ করে।"]
+];
+
+const birdSoundsData = [
+  ["কিচিরমিচির","দোয়েল ও চড়ুই - কিচিরমিচির","🐦","সকালে পাখিরা কিচিরমিচির করে ডাকে।"],
+  ["কুহু কুহু","কোকিলের ডাক - কুহু কুহু","🕊️","বসন্তে কোকিল ডাকে কুহু কুহু।"],
+  ["কা কা","কাকের ডাক - কা কা","🐦‍⬛","কাক ডাকে কা কা।"],
+  ["বকবকম","ঘুঘু ও কবুতরের ডাক - বকবকম","🕊️","কবুতর ও ঘুঘু বকবকম শব্দে ডাকে।"],
+  ["ক্যাঁক ক্যাঁক","টিয়া পাখির ডাক - ক্যাঁক ক্যাঁক","🦜","টিয়া পাখি ডাকে ক্যাঁক ক্যাঁক।"],
+  ["প্যাঁক প্যাঁক","হাঁসের ডাক - প্যাঁক প্যাঁক","🦆","হাঁস ডাকে প্যাঁক প্যাঁক।"],
+  ["হু হু","পেঁচার ডাক - হু হু","🦉","রাতে পেঁচা ডাকে হু হু।"],
+  ["ক্রেয়","ঈগল ও চিলের ডাক","🦅","আকাশে চিল ও ঈগল ডানা মেলে ডাকে।"],
+  ["পিউ কাহা","বউ কথা কও পাখির ডাক","🐤","বউ কথা কও পাখির ডাক খুব মিষ্টি।"],
+  ["কেঁয়াক","বকের ডাক","🦢","জলাশয়ে বক পাখি দেখা যায়।"]
+];
+
+const rhymesData = [
+  ["ভোর হলো","ভোর হলো দোর খোল","🌅","ভোর হলো দোর খোল, খুকুমণি ওঠ রে।\nঐ ডাকে কুঁকড়ুঁ কুঁ, মিষ্টি সুরে ছোটে রে।"],
+  ["আয় আয় চাঁদ মামা","চাঁদ মামা","🌙","আয় আয় চাঁদ মামা, টিপ দিয়ে যা।\nচাঁদের কপালে চাঁদ, টিপ দিয়ে যা।"],
+  ["আম পাতা জোড়া জোড়া","আম পাতা","🍃","আম পাতা জোড়া জোড়া, মারবো চাবুক চড়বো ঘোড়া।\nকবে আসবে, কবে আসবে—খুশির ছড়া।"],
+  ["খোকন খোকন ডাক পারি","খোকন সোনা","👦","খোকন খোকন ডাক পারি, খোকন যাবে শ্বশুর বাড়ি।\nশ্বশুর বাড়ি মজার দেশ, খাবো পিঠা বেশ বেশ।"],
+  ["বৃষ্টি পড়ে টাপুর টুপুর","বৃষ্টি ছড়া","🌧️","বৃষ্টি পড়ে টাপুর টুপুর, নদে এলো বান।\nশিব ঠাকুরের বিয়ে হলো, তিন কন্যে দান।"],
+  ["Twinkle Twinkle","Little Star","⭐","Twinkle, twinkle, little star,\nHow I wonder what you are!"],
+  ["Humpty Dumpty","Nursery Rhyme","🥚","Humpty Dumpty sat on a wall,\nHumpty Dumpty had a great fall."],
+  ["Baa Baa Black Sheep","Nursery Rhyme","🐑","Baa, baa, black sheep,\nHave you any wool?"],
+  ["Jack and Jill","Nursery Rhyme","⛰️","Jack and Jill went up the hill,\nTo fetch a pail of water."],
+  ["Hickory Dickory Dock","Nursery Rhyme","🕰️","Hickory dickory dock,\nThe mouse ran up the clock."]
+];
+
+const surahsData = [
+  ["১. সূরা আল-ফাতিহা","سورة الفاتحة","📖","بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ...\nউচ্চারণ: আলহামদু লিল্লাহি রব্বিল আলামিন। রব্বানা ওয়া লাকাল হামদ।"],
+  ["২. সূরা আন-নাস","سورة الناس","🕌","قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ...\nউচ্চারণ: কুল আউযু বিরব্বিন নাস, মালিকিন নাস, ইলাহিন নাস।"],
+  ["৩. সূরা আল-ফালাক","سورة الفلق","🕌","قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِنْ شَرِّ مَا خَلَقَ...\nউচ্চারণ: কুল আউযু বিরব্বিল ফালাক, মিন শার্রি মা খালাক।"],
+  ["৪. সূরা আল-ইখলাস","سورة الإخلاص","🕌","قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ...\nউচ্চারণ: কুল হুয়াল্লাহু আহাদ, আল্লাহুস সামাদ, লাম ইয়ালিদ ওয়া লাম ইউলাদ।"],
+  ["৫. সূরা আল-মাসাদ (লাহাব)","سورة المسد","📖","تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ...\nউচ্চারণ: তাব্বাত ইয়াদা আবি লাহাবিওঁ ওয়া তাব্ব।"],
+  ["৬. সূরা আন-নাসর","سورة النصر","📖","إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ...\nউচ্চারণ: ইযা জাআ নাসরুল্লাহি ওয়াল ফাতহ।"],
+  ["৭. সূরা আল-কাফিরুন","سورة الكافرون","📖","قُلْ يَا أَيُّهَا الْكَافِرُونَ...\nউচ্চারণ: কুল ইয়া আইয়ুহাল কাফিরুন, লা আ'বুদু মা তা'বুদুন।"],
+  ["৮. সূরা আল-কাওসার","سورة الكوثر","📖","إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ ۝ فَصَلِّ لِرَبِّكَ وَانْحَرْ...\nউচ্চারণ: ইন্না আ'তাইনাকাল কাওসার, ফাসাল্লি লিরব্বিকা ওয়ানহার।"],
+  ["৯. সূরা আল-মাউন","سورة الماعون","📖","أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ...\nউচ্চারণ: আরাআইতাল্লাযি ইউকাযযিবু বিদ্দীন।"],
+  ["১০. সূরা কুরাইশ","سورة قريش","📖","لِإِيلَافِ قُرَيْشٍ ۝ إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ...\nউচ্চারণ: লি-ইলাফি কুরাইশ, ইলাফিহিম রিহলাতাশ শিতা-ই ওয়াস সাইফ।"],
+  ["১১. সূরা আল-ফীল","سورة الفيل","📖","أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ...\nউচ্চারণ: আলাম তারা কাইফা ফা'আলা রব্বুকা বিআসহাবিল ফীল।"],
+  ["১২. সূরা আল-হুমাযাহ","سورة الهمزة","📖","وَيْلٌ لِكُلِّ هُمَزَةٍ لُمَزَةٍ...\nউচ্চারণ: ওয়াইলুল লিকুল্লি হুমাযাতিল লুমাযাহ।"],
+  ["১৩. সূরা আল-আসর","سورة العصر","📖","وَالْعَصْرِ ۝ إِنَّ الْإِنسَانَ لَفِي خُسْرٍ...\nউচ্চারণ: ওয়াল আসর, ইন্নাল ইনসানা লাফি খুসর।"],
+  ["১৪. সূরা আত-তাকাসুর","سورة التكاثر","📖","أَلْهَاكُمُ التَّكَاثُرُ...\nউচ্চারণ: আলহাকুমুত তাকাসুর, হাত্তা যুরতুমুল মাকাবির।"],
+  ["১৫. সূরা আল-ক্বারিআহ","سورة القارعة","📖","الْقَارِعَةُ ۝ مَا الْقَارِعَةُ...\nউচ্চারণ: আল ক্বারি'আহ, মাল ক্বারি'আহ।"],
+  ["১৬. সূরা আল-আদিয়াত","سورة العاديات","📖","وَالْعَادِيَاتِ ضَبْحًا...\nউচ্চারণ: ওয়াল আ'দিয়াতি দাবহা।"],
+  ["১৭. সূরা আয-যিলযাল","سورة الزلزلة","📖","إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا...\nউচ্চারণ: ইযা যুলযিলাতিল আরদু যিলযালাহা।"],
+  ["১৮. সূরা আল-বাইয়্যিনাহ","سورة البينة","📖","لَمْ يَكُنِ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ...\nউচ্চারণ: লাম ইয়াকুনিল্লাযিনা কাফারু মিন আহলিল কিতাব।"],
+  ["১৯. সূরা আল-ক্বদর","سورة القدر","📖","إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ...\nউচ্চারণ: ইন্না আনযালনাহু ফি লাইলাতিল ক্বদর।"],
+  ["২০. সূরা আল-আলাক (প্রথম অংশ)","سورة العلق","📖","اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ...\nউচ্চারণ: ইকরা বিসমি রব্বিকাল্লাযি খালাক।"],
+  ["২১. সূরা আত-ত্বীন","سورة التين","📖","وَالتِّينِ وَالزَّيْتُونِ...\nউচ্চারণ: ওয়াত্তিনি ওয়ায যাইতুন।"],
+  ["২২. সূরা আশ-শারহ","سورة الشرح","📖","أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ...\nউচ্চারণ: আলাম নাশরাহ লাকা সাদরাক।"],
+  ["২৩. সূরা আদ-দুহা","سورة الضحى","📖","وَالضُّحَىٰ ۝ وَاللَّيْلِ إِذَا سَجَىٰ...\nউচ্চারণ: ওয়াদ দুহা, ওয়াল লাইলি ইযা সাজা।"],
+  ["২৪. সূরা আল-লাইল","سورة الليل","📖","وَاللَّيْلِ إِذَا يَغْشَىٰ...\nউচ্চারণ: ওয়াল লাইলি ইযা ইয়াগশা।"],
+  ["২৫. সূরা আশ-শামস","سورة الشمس","📖","وَالشَّمْسِ وَضُحَاهَا...\nউচ্চারণ: ওয়াশ শামসি ওয়া দুহাহা।"]
+];
+
+function buildList(arr, defaultLang){
+  return arr.map(x => ({
+    char: x[0],
+    word: x[1],
+    emoji: x[2],
+    rhyme: x[3],
+    speak: x[4] || x[1],
+    rhymeSpeak: x[3],
+    lang: defaultLang
+  }));
+}
+
+const topicConfig = {
+  alphabet: {
+    title: { bn:"বাংলা বর্ণমালা", en:"English Alphabet", ar:"الحروف العربية" },
+    items: {
+      bn: buildList(bnAlphabet,"bn"),
+      en: buildList(enAlphabet,"en"),
+      ar: buildList(arAlphabet,"bn")
+    }
+  },
+  colors: {
+    title: { bn:"১০টি রঙ (Colors)", en:"10 Colors", ar:"١٠ ألوان" },
+    items: {
+      bn: buildList(colorsData,"bn"),
+      en: buildList(colorsData,"bn"),
+      ar: buildList(colorsData,"bn")
+    }
+  },
+  trees: {
+    title: { bn:"১০টি গাছের নাম", en:"10 Trees", ar:"١٠ أشجار" },
+    items: {
+      bn: buildList(treesData,"bn"),
+      en: buildList(treesData,"bn"),
+      ar: buildList(treesData,"bn")
+    }
+  },
+  fruits: {
+    title: { bn:"১০টি ফলের নাম", en:"10 Fruits", ar:"١٠ فواكه" },
+    items: {
+      bn: buildList(fruitsData,"bn"),
+      en: buildList(fruitsData,"bn"),
+      ar: buildList(fruitsData,"bn")
+    }
+  },
+  nationalAnimals: {
+    title: { bn:"১০টি জাতীয় পশুর নাম", en:"10 National Animals", ar:"١٠ حيوانات وطنية" },
+    items: {
+      bn: buildList(nationalAnimalsData,"bn"),
+      en: buildList(nationalAnimalsData,"bn"),
+      ar: buildList(nationalAnimalsData,"bn")
+    }
+  },
+  fishes: {
+    title: { bn:"১০টি মাছের নাম", en:"10 Fishes", ar:"١٠ أسماك" },
+    items: {
+      bn: buildList(fishesData,"bn"),
+      en: buildList(fishesData,"bn"),
+      ar: buildList(fishesData,"bn")
+    }
+  },
+  flowers: {
+    title: { bn:"১০টি ফুলের নাম", en:"10 Flowers", ar:"١٠ أزهار" },
+    items: {
+      bn: buildList(flowersData,"bn"),
+      en: buildList(flowersData,"bn"),
+      ar: buildList(flowersData,"bn")
+    }
+  },
+  animalSounds: {
+    title: { bn:"১০টি প্রাণীর ডাক", en:"10 Animal Sounds", ar:"١٠ أصوات حيوانات" },
+    items: {
+      bn: buildList(animalSoundsData,"bn"),
+      en: buildList(animalSoundsData,"bn"),
+      ar: buildList(animalSoundsData,"bn")
+    }
+  },
+  birdSounds: {
+    title: { bn:"১০টি পাখির ডাক", en:"10 Bird Sounds", ar:"١٠ أصوات طيور" },
+    items: {
+      bn: buildList(birdSoundsData,"bn"),
+      en: buildList(birdSoundsData,"bn"),
+      ar: buildList(birdSoundsData,"bn")
+    }
+  },
+  rhymes: {
+    title: { bn:"বাচ্চাদের ছড়া ও কবিতা", en:"Kids Rhymes & Poems", ar:"أناشيد الأطفال" },
+    items: {
+      bn: buildList(rhymesData,"bn"),
+      en: buildList(rhymesData,"bn"),
+      ar: buildList(rhymesData,"bn")
+    }
+  },
+  surahs: {
+    title: { bn:"২৫টি ছোট সূরা", en:"25 Short Surahs", ar:"٢٥ سورة قصيرة" },
+    items: {
+      bn: buildList(surahsData,"ar"),
+      en: buildList(surahsData,"ar"),
+      ar: buildList(surahsData,"ar")
+    }
+  }
 };
 
-let language="bn";
-let currentIndex=0;
-let quizData=[];
-let quizIndex=0;
-let points=0;
-let answered=false;
-let currentAudio=null;
+const voiceSettings = {
+  bn: { lang:"bn-BD", dir:"ltr", pitch:1.12, rate:0.88 },
+  en: { lang:"en-US", dir:"ltr", pitch:1.10, rate:0.88 },
+  ar: { lang:"ar-SA", dir:"rtl", pitch:1.05, rate:0.84 }
+};
 
-const $=id=>document.getElementById(id);
-function currentItems(){return languages[language].items}
+let currentLang = "bn";
+let currentTopic = "alphabet";
+let currentIndex = 0;
+let quizData = [];
+let quizIndex = 0;
+let points = 0;
+let answered = false;
 
-function speakWithTTS(text,config){
+const $ = id => document.getElementById(id);
+
+function getActiveItems(){
+  return topicConfig[currentTopic].items[currentLang];
+}
+
+function pickClearVoice(langCode){
+  if(!("speechSynthesis" in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  if(!voices || !voices.length) return null;
+  const prefix = langCode.split("-")[0].toLowerCase();
+  const matching = voices.filter(v => v.lang.toLowerCase().startsWith(prefix));
+  const femaleMatch = matching.find(v =>
+    /female|woman|girl|zira|samantha|ava|aria|google|bn|ar/i.test(v.name)
+  );
+  return femaleMatch || matching[0] || null;
+}
+
+function speakText(text, forceLang){
   if(!("speechSynthesis" in window)){
-    alert("আপনার ব্রাউজারে ভয়েস সুবিধা নেই।");
+    alert("আপনার ডিভাইসে ভয়েস সুবিধা সক্রিয় নেই।");
     return;
   }
+  const targetLang = forceLang || currentLang;
+  const cfg = voiceSettings[targetLang] || voiceSettings.bn;
   speechSynthesis.cancel();
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.lang=config.voice;
-  utter.pitch=config.pitch;
-  utter.rate=config.rate;
-  const prefix=config.voice.split("-")[0];
-  const voice=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith(prefix.toLowerCase()));
-  if(voice) utter.voice=voice;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = cfg.lang;
+  utter.pitch = cfg.pitch;
+  utter.rate = cfg.rate;
+  const voice = pickClearVoice(cfg.lang);
+  if(voice) utter.voice = voice;
   speechSynthesis.speak(utter);
 }
 
-function speak(text){
-  if(currentAudio){
-    currentAudio.pause();
-    currentAudio=null;
-  }
-  speakWithTTS(text,languages[language]);
-}
-
 function triggerMoveAnimation(){
-  const pic=$("picture");
+  const pic = $("picture");
   pic.classList.remove("moving");
   void pic.offsetWidth;
   pic.classList.add("moving");
 }
 
-function showLetter(index){
-  const items=currentItems();
-  currentIndex=(index+items.length)%items.length;
-  const item=items[currentIndex];
-  const cfg=languages[language];
+function showItem(index){
+  const items = getActiveItems();
+  currentIndex = (index + items.length) % items.length;
+  const item = items[currentIndex];
+  const cfg = voiceSettings[currentLang];
 
-  $("bigChar").textContent=item.char;
-  $("word").textContent=item.word;
-  $("picture").textContent=item.emoji;
-  $("rhymeText").textContent=item.rhyme;
-  $("rhymeText").dir=cfg.dir;
-  $("word").dir=cfg.dir;
-  $("hint").textContent="বর্ণ "+(currentIndex+1)+" / "+items.length;
+  $("bigChar").textContent = item.char;
+  $("word").textContent = item.word;
+  $("picture").textContent = item.emoji;
+  $("rhymeText").textContent = item.rhyme;
+  $("rhymeText").dir = currentTopic === "surahs" ? "rtl" : cfg.dir;
+  $("word").dir = cfg.dir;
+  $("hint").textContent = "আইটেম " + (currentIndex + 1) + " / " + items.length;
 
   triggerMoveAnimation();
 
   document.querySelectorAll(".card").forEach((card,i)=>{
-    card.classList.toggle("selected",i===currentIndex);
+    card.classList.toggle("selected", i === currentIndex);
   });
 
-  $("speakBtn").onclick=()=>{triggerMoveAnimation();speak(item.speak)};
-  $("rhymeBtn").onclick=()=>{triggerMoveAnimation();speak(item.rhymeSpeak)};
-  $("picture").onclick=()=>{triggerMoveAnimation();speak(item.speak)};
+  $("speakBtn").onclick = () => {
+    triggerMoveAnimation();
+    speakText(item.speak, item.lang);
+  };
+  $("rhymeBtn").onclick = () => {
+    triggerMoveAnimation();
+    speakText(item.rhymeSpeak, item.lang);
+  };
+  $("picture").onclick = () => {
+    triggerMoveAnimation();
+    speakText(item.speak, item.lang);
+  };
 }
 
 function renderGrid(){
-  const items=currentItems();
-  const cfg=languages[language];
-  const grid=$("letterGrid");
-  grid.innerHTML="";
-  grid.dir=cfg.dir;
+  const items = getActiveItems();
+  const cfg = voiceSettings[currentLang];
+  const grid = $("letterGrid");
+  grid.innerHTML = "";
+  grid.dir = cfg.dir;
+  $("gridTitle").textContent = topicConfig[currentTopic].title[currentLang];
 
   items.forEach((item,index)=>{
-    const card=document.createElement("button");
-    card.className="card";
-    card.type="button";
+    const card = document.createElement("button");
+    card.className = "card";
+    card.type = "button";
 
-    const letter=document.createElement("span");
-    letter.className="letter";
-    letter.textContent=item.char;
+    const letter = document.createElement("span");
+    letter.className = "letter";
+    letter.textContent = item.char;
 
-    const emoji=document.createElement("span");
-    emoji.className="emoji";
-    emoji.textContent=item.emoji;
+    const emoji = document.createElement("span");
+    emoji.className = "emoji";
+    emoji.textContent = item.emoji;
 
-    const small=document.createElement("small");
-    small.textContent=item.word;
+    const small = document.createElement("small");
+    small.textContent = item.word;
 
-    card.append(letter,emoji,small);
-    card.addEventListener("click",()=>{
-      showLetter(index);
-      speak(item.speak);
+    card.append(letter, emoji, small);
+    card.addEventListener("click", ()=>{
+      showItem(index);
+      speakText(item.speak, item.lang);
     });
     grid.appendChild(card);
   });
-  showLetter(currentIndex);
+  showItem(currentIndex);
 }
 
-document.querySelectorAll("[data-language]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    language=button.dataset.language;
-    currentIndex=0;
-    document.querySelectorAll("[data-language]").forEach(b=>
-      b.classList.toggle("active",b===button)
-    );
-    $("gridTitle").textContent=languages[language].title;
+document.querySelectorAll("[data-lang]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    currentLang = btn.dataset.lang;
+    currentIndex = 0;
+    document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active", b === btn));
     renderGrid();
-    $("quizQuestion").textContent="প্রস্তুত হলে কুইজ শুরু করুন।";
-    $("quizOptions").innerHTML="";
-    $("feedback").textContent="";
-    $("nextQuiz").hidden=true;
   });
 });
 
-$("prevBtn").onclick=()=>showLetter(currentIndex-1);
-$("nextBtn").onclick=()=>showLetter(currentIndex+1);
+document.querySelectorAll("[data-topic]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    currentTopic = btn.dataset.topic;
+    currentIndex = 0;
+    document.querySelectorAll("[data-topic]").forEach(b=>b.classList.toggle("active", b === btn));
+    renderGrid();
+    $("quizQuestion").textContent = "এই সেকশনের কুইজ শুরু করতে 'কুইজ শুরু' চাপুন।";
+    $("quizOptions").innerHTML = "";
+    $("feedback").textContent = "";
+    $("nextQuiz").hidden = true;
+  });
+});
+
+$("prevBtn").onclick = () => showItem(currentIndex - 1);
+$("nextBtn").onclick = () => showItem(currentIndex + 1);
 
 function shuffle(items){
-  const copy=[...items];
-  for(let i=copy.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [copy[i],copy[j]]=[copy[j],copy[i]];
+  const copy = [...items];
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
 }
 
 function startQuiz(){
-  quizData=shuffle(currentItems()).slice(0,10);
-  quizIndex=0;
-  points=0;
+  const items = getActiveItems();
+  quizData = shuffle(items).slice(0, Math.min(10, items.length));
+  quizIndex = 0;
+  points = 0;
+  $("score").textContent = "স্কোর: ০";
   showQuiz();
 }
 
 function showQuiz(){
-  answered=false;
-  const item=quizData[quizIndex];
-  const items=currentItems();
-  const cfg=languages[language];
+  answered = false;
+  const item = quizData[quizIndex];
+  const items = getActiveItems();
 
-  $("quizQuestion").textContent="কোনটি "+item.word+" এর সঠিক বর্ণ?";
-  $("quizOptions").dir=cfg.dir;
+  $("quizQuestion").textContent = "কোনটি '" + item.word + "' এর সঠিক পরিচিতি?";
 
-  const wrong=shuffle(items.filter(x=>x.char!==item.char)).slice(0,3);
-  const options=shuffle([item,...wrong]);
+  const wrong = shuffle(items.filter(x => x.char !== item.char)).slice(0, 3);
+  const options = shuffle([item, ...wrong]);
 
-  $("quizOptions").innerHTML="";
-  $("feedback").textContent="";
-  $("nextQuiz").hidden=true;
+  $("quizOptions").innerHTML = "";
+  $("feedback").textContent = "";
+  $("nextQuiz").hidden = true;
 
   options.forEach(option=>{
-    const button=document.createElement("button");
-    button.className="quiz-option";
-    button.textContent=option.char;
-    button.onclick=()=>{
-      if(answered)return;
-      answered=true;
-      if(option.char===item.char){
+    const button = document.createElement("button");
+    button.className = "quiz-option";
+    button.type = "button";
+    button.textContent = option.char;
+    button.onclick = ()=>{
+      if(answered) return;
+      answered = true;
+      if(option.char === item.char){
         points++;
-        $("feedback").textContent="🎉 চমৎকার! সঠিক উত্তর!";
-        $("feedback").style.color="green";
-        speakWithTTS("সঠিক উত্তর!",languages.bn);
+        $("feedback").textContent = "🎉 চমৎকার! সঠিক উত্তর!";
+        $("feedback").style.color = "green";
+        speakText("সঠিক উত্তর!", "bn");
       }else{
-        $("feedback").textContent="❌ সঠিক উত্তর: "+item.char;
-        $("feedback").style.color="red";
+        $("feedback").textContent = "❌ সঠিক উত্তর: " + item.char;
+        $("feedback").style.color = "red";
       }
-      [...$("quizOptions").children].forEach(btn=>btn.disabled=true);
-      $("score").textContent="স্কোর: "+points+" / "+(quizIndex+1);
-      $("nextQuiz").hidden=false;
+      [...$("quizOptions").children].forEach(btn => btn.disabled = true);
+      $("score").textContent = "স্কোর: " + points + " / " + (quizIndex + 1);
+      $("nextQuiz").hidden = false;
     };
     $("quizOptions").appendChild(button);
   });
 }
 
-$("startQuiz").onclick=startQuiz;
-$("nextQuiz").onclick=()=>{
+$("startQuiz").onclick = startQuiz;
+$("nextQuiz").onclick = ()=>{
   quizIndex++;
-  if(quizIndex>=quizData.length){
-    $("quizQuestion").textContent="🏆 কুইজ শেষ! আপনার ফলাফল: "+points+" / "+quizData.length;
-    $("quizOptions").innerHTML="";
-    $("feedback").textContent=points>=8?"অসাধারণ! খুব ভালো করেছেন।":"আরও অনুশীলন করুন।";
-    $("nextQuiz").hidden=true;
+  if(quizIndex >= quizData.length){
+    $("quizQuestion").textContent = "🏆 কুইজ শেষ! আপনার ফলাফল: " + points + " / " + quizData.length;
+    $("quizOptions").innerHTML = "";
+    $("feedback").textContent = points >= Math.ceil(quizData.length * 0.7) ? "অসাধারণ! খুব ভালো করেছেন।" : "আরও অনুশীলন করুন।";
+    $("nextQuiz").hidden = true;
     return;
   }
   showQuiz();
 };
 
 if("speechSynthesis" in window){
-  speechSynthesis.onvoiceschanged=()=>{};
+  speechSynthesis.onvoiceschanged = () => {};
 }
 
 renderGrid();
 
 window.addEventListener("online",()=>{
-  $("offlineStatus").textContent="🟢 আপনি অনলাইনে আছেন";
+  $("offlineStatus").textContent = "🟢 আপনি অনলাইনে আছেন";
 });
 window.addEventListener("offline",()=>{
-  $("offlineStatus").textContent="📴 অফলাইন মোড";
+  $("offlineStatus").textContent = "📴 অফলাইন মোড";
 });
-$("offlineStatus").textContent=navigator.onLine?"🟢 আপনি অনলাইনে আছেন":"📴 অফলাইন মোড";
+$("offlineStatus").textContent = navigator.onLine ? "🟢 আপনি অনলাইনে আছেন" : "📴 অফলাইন মোড";
 
-// PWA Service Worker
 if("serviceWorker" in navigator){
   window.addEventListener("load",()=>{
     navigator.serviceWorker.register("./service-worker.js")
@@ -597,26 +933,25 @@ if("serviceWorker" in navigator){
   });
 }
 
-// Install App
 let deferredPrompt;
-const installBtn=$("installBtn");
+const installBtn = $("installBtn");
 
 window.addEventListener("beforeinstallprompt",event=>{
   event.preventDefault();
-  deferredPrompt=event;
-  installBtn.style.display="block";
+  deferredPrompt = event;
+  installBtn.style.display = "block";
 });
 
 installBtn.addEventListener("click",async()=>{
-  if(!deferredPrompt)return;
+  if(!deferredPrompt) return;
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
-  deferredPrompt=null;
-  installBtn.style.display="none";
+  deferredPrompt = null;
+  installBtn.style.display = "none";
 });
 
 window.addEventListener("appinstalled",()=>{
-  installBtn.style.display="none";
+  installBtn.style.display = "none";
 });
 </script>
 
