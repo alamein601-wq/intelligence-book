@@ -1,6 +1,6 @@
 
 {
-  "id": "/",
+  "id": "./",
   "name": "Intelligence Book",
   "short_name": "Intelligence Book",
   "description": "শিশুদের বাংলা, ইংরেজি, আরবি ও ইসলামিক শিক্ষার স্মার্ট বই",
@@ -17,10 +17,10 @@
   ],
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
